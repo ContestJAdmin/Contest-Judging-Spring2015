@@ -19,6 +19,8 @@
             <%= link_to 'Edit', edit_contest_path(contest)%>
             <% if contest.date < Date.today #only past contests can be deleted %>
             <%= link_to 'Destroy', contest, :confirm => 'Are you sure?', :method => :delete %>
+            <% else %>
+            Distroy
             <% end %>
         </td>
     </tr>     
