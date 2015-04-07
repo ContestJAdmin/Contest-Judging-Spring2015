@@ -13,7 +13,7 @@
     <tr>
         <td> <%= link_to contest.name, contest %></td>
         <td> <%= contest.location %></td>
-        <td> <%= contest.date %></td>
+        <td> <%= contest.date.to_date.to_formatted_s(:long_ordinal) %></td>
         <td>
             <%= link_to 'Edit', edit_contest_path(contest)%>
             <% if contest.date < Date.today #only past contests can be deleted %>
