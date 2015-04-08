@@ -11,6 +11,39 @@ img {
 .navbar-brand {
   font-size: inherit;
   }
+  
+// Alert
+.alert {
+  padding: 0px;
+  border-color: #CCC;
+  #flash_success {
+    padding: 15px;
+    background-color: #d3edd3;
+    border-color: #c9dbc9;
+    color: #407c43;
+  }
+  #flash_error {
+    padding: 15px;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+  }
+}
+
+// Jumbotron
+
+.jumbotron h1 {
+  font-size: 30px;
+}
+
+// Accordian
+
+.panel-heading {
+  padding: 0px;
+}
+.panel-title {
+  padding: 10px 15px;
+}
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes

@@ -18,7 +18,6 @@
                 <th>Location</th>
                 <th>Date</th>
                 <th>Actions</th>
-                <th></th>
             </tr>
             <tr>
                 <td> <%= @contest.location %></td>
@@ -53,12 +52,11 @@
             <% @contest.categories.each do |category| %>
             <tr>
                 <th>
-                    <%= category.name %>&nbsp;
+                    <%= link_to category.name, contest_category_path(@contest, category) %>&nbsp;
                 </th>
                 <th>
-                    <%= link_to 'Show', contest_category_path(@contest, category)%>
                     <%= link_to 'Edit', edit_contest_category_path(@contest, category)%>
-                    <%= link_to 'Destroy', [@contest, category], :confirm => 'Are you sure?', :method => :delete %></td>
+                    <%= link_to 'Delete', [@contest, category], :confirm => 'Are you sure?', :method => :delete %></td>
                 </th>
             </tr>
             <% end %>   
@@ -86,12 +84,11 @@
             <% @contest.projects.each do |project| %>
             <tr>
                 <th>
-                    <%= project.name %>
+                    <%= link_to project.name, contest_project_path(@contest, project) %>
                 </th>
                 <th>
-                    <%= link_to 'Show', contest_project_path(@contest, project)%>
                     <%= link_to 'Edit', edit_contest_project_path(@contest, project)%>
-                    <%= link_to 'Destroy', [@contest, project], :confirm => 'Are you sure?', :method => :delete %>
+                    <%= link_to 'Delete', [@contest, project], :confirm => 'Are you sure?', :method => :delete %>
                 </th>
             <% end %>   
         </table>

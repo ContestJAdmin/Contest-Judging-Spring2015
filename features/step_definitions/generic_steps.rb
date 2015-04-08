@@ -23,6 +23,7 @@ When /^I login as (.*)$/ do |role|
     click_button('Sign in')
     
     #Add new contest
+    visit root_path
     click_link('Contests')
     click_link('New Contest')
     fill_in(:contest_name, :with=>'Trial')

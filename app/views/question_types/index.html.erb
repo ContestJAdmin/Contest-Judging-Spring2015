@@ -4,17 +4,16 @@
 
 <table class="table table-striped">
     <tr>
-        <th>Question Type &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</th>
-        <th>Contest Id &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</th>
-        <th>Actions &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</th>
+        <th>Question Type </th>
+        <th>Contest Id </th>
+        <th>Actions </th>
     </tr>
 <% @question_types.each do |q| %>
     <tr>
-        <td> <%= q.question_type %></td>
+        <td> <%= link_to q.question_type, q %></td>
         <td> <%= q.contest_id %></td>
-        <td> <%= link_to 'Show',q %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-             <%= link_to 'Edit', edit_question_type_path(q)%>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-         <%= link_to 'Destroy', q, :confirm => 'Are you sure?', :method => :delete %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </td>
+        <td> <%= link_to 'Edit', edit_question_type_path(q)%>&nbsp;&nbsp;&nbsp;
+            <%= link_to 'Delete', q, :confirm => 'Are you sure?', :method => :delete %> </td>
     </tr>     
 <% end %>
 </table>
