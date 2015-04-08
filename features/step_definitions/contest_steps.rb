@@ -38,7 +38,6 @@ end
 
 When /^I click .* "Create" button$/ do 
   click_button('Create')
-  print page.body
 end
 
 Then /^I should see .* text field for (.*)$/ do |field_name|
