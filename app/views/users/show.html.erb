@@ -9,8 +9,10 @@
       <%= check_box_tag "user[project_ids][]", project.id, @user.projects.include?(project) %>  
       <%= project.name %>  
     </div>  
-<% end %> 
-<%= f.submit 'Update' %>
+<% end %>
+<% if @user.projects.length > 0 %>
+  <%= f.submit 'Update' %>
+<% end %>  
 </p>
 <% end %>
 
