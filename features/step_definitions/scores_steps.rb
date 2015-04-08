@@ -12,7 +12,7 @@ When /^I click .* Contests .*$/ do
 end
 
 When /^I click .* contest .*$/ do
-    click_link('Show')
+    click_link('Trial')
 end
 
 Then /^I should see .* scores$/ do

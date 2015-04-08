@@ -7,6 +7,10 @@ When /^I click "(.*)"$/ do |link_text|
 end
 
 When /^I login as (.*)$/ do |role|
+    
+    #Create admin
+    admin = FactoryGirl.create(:user, email: "cjadmminn@gmail.com", password: "testtest", password_confirmation: "testtest", admin: 't')
+    
     #Sign judge up
     click_link('Sign up')
     fill_in(:user_name, :with=>'Judge1')
@@ -19,7 +23,7 @@ When /^I login as (.*)$/ do |role|
     #Sign admin in
     click_link('Sign in')
     fill_in(:user_email, :with=>'cjadmminn@gmail.com')
-    fill_in(:user_password, :with=>'changeme')
+    fill_in(:user_password, :with=>'testtest')
     click_button('Sign in')
     
     #Add new contest
