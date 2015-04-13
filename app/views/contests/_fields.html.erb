@@ -2,19 +2,41 @@
 <div class="form-group">
     <label>
     <%= f.label :name %>
-    <%= f.text_field :name ,placeholder: "enter name" %>
     </label>
+    <div>
+        <%= f.text_field :name ,placeholder: "enter name" %>
+    </div>
 </div>
 <div class="form-group">
     <label>
     <%= f.label :location%>
-    <%= f.text_field :location ,placeholder: "enter location" %>
     </label>
+    <div>
+        <%= f.text_field :location ,placeholder: "enter location" %>
+    </div>
 </div>
 <div class="form-group">
-    <label>
-    <%= f.label :date%>
-    <%= f.date_field :date ,placeholder: "mm/dd/yyyy"%>
-    </label>
+    <div class='input-group'>
+        <label>
+        <%= f.label :date%>
+        </label>
+        <div class='input-group date' id='datetimepicker'>
+            <input id="contest_date" name="contest[date]" type='text' class="form-control" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
 </div>
+<div>
+    <%= f.object.date%>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker').datetimepicker({
+            defaultDate: "<%= f.object.date.strftime("%Y-%m-%d %H:%M") %>",
+            format: "MMMM do, YYYY hh:mm A"
+        });
+    });
+</script>
 
