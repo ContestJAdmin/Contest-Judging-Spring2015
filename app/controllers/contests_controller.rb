@@ -31,7 +31,7 @@ class ContestsController < ApplicationController
     def update
         @contest = Contest.find(params[:id])
         if @contest.update_attributes(contest_params)
-            flash[:success] = "Profile Updated"
+            flash[:success] = "Contest Updated"
             redirect_to @contest
         else
             render 'edit'
@@ -40,7 +40,7 @@ class ContestsController < ApplicationController
     
     def destroy
         Contest.find(params[:id]).destroy
-        flash[:success] = "User Deleted"
+        flash[:success] = "Contest Deleted"
         redirect_to contests_path
     end
     
