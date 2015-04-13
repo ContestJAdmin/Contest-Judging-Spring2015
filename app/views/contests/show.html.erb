@@ -58,7 +58,7 @@
                 <th>
                     <%= link_to 'Show', contest_category_path(@contest, category)%>
                     <%= link_to 'Edit', edit_contest_category_path(@contest, category)%>
-                    <%= link_to 'Destroy', [@contest, category], :confirm => 'Are you sure?', :method => :delete %></td>
+                    <%= link_to 'Delete', [@contest, category], :confirm => 'Are you sure?', :method => :delete %></td>
                 </th>
             </tr>
             <% end %>   
@@ -91,7 +91,7 @@
                 <th>
                     <%= link_to 'Show', contest_project_path(@contest, project)%>
                     <%= link_to 'Edit', edit_contest_project_path(@contest, project)%>
-                    <%= link_to 'Destroy', [@contest, project], :confirm => 'Are you sure?', :method => :delete %>
+                    <%= link_to 'Delete', [@contest, project], :confirm => 'Are you sure?', :method => :delete %>
                 </th>
             <% end %>   
         </table>
