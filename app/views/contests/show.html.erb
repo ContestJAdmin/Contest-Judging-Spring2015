@@ -99,6 +99,24 @@
       </div>
     </div>
   </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingFour">
+      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        <h4 class="panel-title">
+          Question Types
+        </h4>
+      </a>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+      <div class="panel-body">
+        <h3>Question Types</h3>
+        <table class="table table-striped">
+           
+        </table>
+        <%= link_to 'Add Question Types', question_types_path %><br/>
+      </div>
+    </div>
+  </div>
 </div>
 <ol class="breadcrumb">
   <li role="presentation"><%= link_to 'Upload Projects File', new_contest_attachment_path(@contest) %></li>
