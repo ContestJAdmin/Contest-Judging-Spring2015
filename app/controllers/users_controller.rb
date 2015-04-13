@@ -18,14 +18,20 @@ class UsersController < ApplicationController
   end
   
   def update
-  params[:user][:project_ids] ||= []
-  @user = User.find(params[:id])
-   if @user.update_attributes(params[:user].permit!)
-    flash[:notice] = 'updated success'
-    redirect_to :action =>'index',:id =>@user
-  else
-    render :action=>'show'
+    params[:user][:project_ids] ||= []
+    @user = User.find(params[:id])
+     if @user.update_attributes(params[:user].permit!)
+      flash[:notice] = 'updated success'
+      redirect_to :action =>'index',:id =>@user
+    else
+      render :action=>'show'
+    end
   end
+  
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "Judge Account Deleted"
+    redirect_to :action => 'index'
   end
 
 private
