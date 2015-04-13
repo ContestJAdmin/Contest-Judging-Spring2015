@@ -28,14 +28,13 @@
         </div>
     </div>
 </div>
-<div>
-    <%= f.object.date%>
-</div>
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker').datetimepicker({
+            <% if f.object.date %>
             defaultDate: "<%= f.object.date.strftime("%Y-%m-%d %H:%M") %>",
-            format: "MMMM do, YYYY hh:mm A"
+            <% end %>
+            format: "MMMM Do, YYYY hh:mm A"
         });
     });
 </script>
