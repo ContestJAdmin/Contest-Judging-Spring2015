@@ -4,15 +4,18 @@
 
 <p>
 <%= form_for @user  do |f| %>
-<% for project in Project.all %>  
-    <div>  
-      <%= check_box_tag "user[project_ids][]", project.id, @user.projects.include?(project) %>  
-      <%= project.name %>  
-    </div>  
-<% end %>
-<% if @user.projects.length > 0 %>
-  <%= f.submit 'Update' %>
-<% end %>  
+  <% if Project.all.length < 1 %>
+   There are currently no projects to assign. 
+  <% end %>
+  <% for project in Project.all %>  
+      <div>  
+        <%= check_box_tag "user[project_ids][]", project.id, @user.projects.include?(project) %>  
+        <%= project.name %>  
+      </div>  
+  <% end %>
+  <% if Project.all.length > 0 %>
+    <%= f.submit 'Update' %>
+  <% end %>  
 </p>
 <% end %>
 
