@@ -22,13 +22,14 @@
             </tr>
             <tr>
                 <td> <%= @contest.location %></td>
-                <td> <%= @contest.date.to_date.to_formatted_s(:long_ordinal) %></td>
-                <td> <%= link_to 'Edit', edit_contest_path(@contest)%>
+                <td> <%= @contest.date.strftime("%B %e, %Y %l:%M %p") %></td>
+                <th> <%= link_to 'Edit', edit_contest_path(@contest)%>
                 <% if @contest.date < Date.today #only past contests can be deleted %>
-                <%= link_to 'Delete', @contest, :confirm => 'Are you sure?', :method => :delete %></td>
+                <%= link_to 'Delete', @contest, :method => :delete, data: {confirm: "Are you sure?"} %>
                 <% else %>
                 Delete
                 <% end %>
+                </th>
             </tr>     
             </table>
       </div>
@@ -53,12 +54,11 @@
             <% @contest.categories.each do |category| %>
             <tr>
                 <th>
-                    <%= category.name %>&nbsp;
+                    <%= link_to category.name, contest_category_path(@contest, category)%>&nbsp;
                 </th>
                 <th>
-                    <%= link_to 'Show', contest_category_path(@contest, category)%>
                     <%= link_to 'Edit', edit_contest_category_path(@contest, category)%>
-                    <%= link_to 'Destroy', [@contest, category], :confirm => 'Are you sure?', :method => :delete %></td>
+                    <%= link_to 'Delete', [@contest, category], :method => :delete, data: {confirm: "Are you sure?"} %></td>
                 </th>
             </tr>
             <% end %>   
@@ -86,12 +86,12 @@
             <% @contest.projects.each do |project| %>
             <tr>
                 <th>
-                    <%= project.name %>
+                    <%= link_to project.name, contest_project_path(@contest, project)%>
                 </th>
                 <th>
-                    <%= link_to 'Show', contest_project_path(@contest, project)%>
+                    
                     <%= link_to 'Edit', edit_contest_project_path(@contest, project)%>
-                    <%= link_to 'Destroy', [@contest, project], :confirm => 'Are you sure?', :method => :delete %>
+                    <%= link_to 'Delete', [@contest, project], :method => :delete, data: {confirm: "Are you sure?"} %>
                 </th>
             <% end %>   
         </table>
