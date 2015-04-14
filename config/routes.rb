@@ -3,6 +3,7 @@ Rails.application.routes.draw do
         resources :categories
         resources :attachments
         resources :projects
+        resources :question_types
     end
     post '/contests/:contest_id/categories/:id/attach', to: 'categories#attach', :as => :attach
     post '/contests/:contest_id/categories/:id/unattach', to: 'categories#unattach', :as => :unattach
@@ -12,7 +13,6 @@ Rails.application.routes.draw do
     resources :projects
     resources :judges
     resources :questions
-    resources :question_types
     resources :gradesheets
     resources :scores
 end

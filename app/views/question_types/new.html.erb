@@ -2,7 +2,7 @@
     Add new Question Type
 </h1>
 <div>
-<%= form_for(@question_type) do |f| %>
+<%= form_for([@contest, @question_type]) do |f| %>
     <%= render 'fields', :f => f %>
     <%= f.submit "Create" %>
 <% end %>

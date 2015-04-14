@@ -111,9 +111,22 @@
       <div class="panel-body">
         <h3>Question Types</h3>
         <table class="table table-striped">
-           
+           <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+            <% @contest.question_types.each do |type| %>
+            <tr>
+                <th>
+                    <%= type.question_type %>&nbsp;
+                </th>
+                <th>
+                  
+                </th>
+            </tr>
+            <% end %>   
         </table>
-        <%= link_to 'Add Question Types', question_types_path %><br/>
+        <%= link_to 'Add Question Types', contest_question_types_path(@contest) %><br/>
       </div>
     </div>
   </div>
@@ -122,7 +135,6 @@
   <li role="presentation"><%= link_to 'Upload Projects File', new_contest_attachment_path(@contest) %></li>
   <li role="presentation"><%= link_to 'Add Judges to projects', controller: "users" %></li>
   <li role="presentation"><%= link_to 'Download Scores', controller: "scores" %></li>
-  <li role="presentation"><%= link_to 'Add Question Types', question_types_path %></li>
   <li role="presentation"><%= link_to 'Add Questions', questions_path %></li>
   <li role="presentation"><%= link_to 'Judge Project Mapping', action:'show' , controller:'judges' %></li>
 </ul>
