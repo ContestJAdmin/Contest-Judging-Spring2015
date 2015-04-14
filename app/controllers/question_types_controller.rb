@@ -17,7 +17,7 @@ class QuestionTypesController < ApplicationController
     
     def show
         id = params[:id]
-        @question_type = QuestionType.find(id)
+        @question_type = @contest.question_types.find(id)
     end
     
     def new 
@@ -49,9 +49,10 @@ class QuestionTypesController < ApplicationController
     end
     
     def destroy
-        QuestionType.find(params[:id]).destroy
+        @question_type = @contest.question_types.find(params[:id])
+        @question_type.destroy
         flash[:success] = "Question Type Deleted"
-        redirect_to question_types_path
+        redirect_to contest_question_types_path
     end
     
     def question_type_params

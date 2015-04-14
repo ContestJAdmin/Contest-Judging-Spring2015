@@ -12,9 +12,9 @@
     <tr>
         <td> <%= q.question_type %></td>
         <td> <%= q.contest_id %></td>
-        <td> <%= link_to 'Show',q %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-             <%= link_to 'Edit', edit_question_type_path(q)%>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-         <%= link_to 'Destroy', q, :confirm => 'Are you sure?', :method => :delete %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </td>
+        <td> <%= link_to 'Show', contest_question_type_path(q.question_type, q.contest_id) %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+             <%= link_to 'Edit', edit_contest_question_type_path(q.question_type, q.contest_id)%>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+         <%= link_to 'Destroy', contest_question_type_path(q, q.contest_id), :confirm => 'Are you sure?', :method => :delete %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </td>
     </tr>     
 <% end %>
 </table>
