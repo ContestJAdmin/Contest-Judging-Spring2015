@@ -10,11 +10,10 @@
     </tr>
     <tr>
         <td> <%= @question_type.question_type %></td>
-        <td> <%= @question_type.contest_id %></td>
-        <td> <%= link_to 'Edit', edit_question_path(@question_type)%></td>
-        <td> <%= link_to 'Destroy', @question_type, :confirm => 'Are you sure?', :method => :delete %></td>
+        <td> <%= link_to 'Edit', edit_question_path(@question_type.question_type)%></td>
+        <td> <%= link_to 'Destroy', contest_question_type_path(@question_type.contest_id, @question_type), :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>     
 </table>
 
 <br/>
-<%= link_to 'Add Questions Types', question_types_path %>
+<%= link_to 'Add Questions Types', contest_question_types_path %>

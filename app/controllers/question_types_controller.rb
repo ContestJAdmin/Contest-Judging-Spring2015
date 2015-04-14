@@ -17,7 +17,7 @@ class QuestionTypesController < ApplicationController
     
     def show
         id = params[:id]
-        @question_type = @contest.question_types.find(id)
+        @question_type = QuestionType.find(id)
     end
     
     def new 
@@ -35,11 +35,11 @@ class QuestionTypesController < ApplicationController
     end
     
     def edit 
-        @question_type = QuestionType.find(params[:id])
+        @question_type = @contest.question_types.find(params[:id])
     end
     
     def update
-        @question_type = QuestionType.find(params[:id])
+        @question_type = @contest.question_types.find(params[:id])
         if @question_type.update_attributes(question_type_params)
             flash[:success] = "QuestionType Updated"
             redirect_to @question_type
