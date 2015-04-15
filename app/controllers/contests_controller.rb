@@ -7,7 +7,6 @@ class ContestsController < ApplicationController
     def show
         id = params[:id]
         @contest = Contest.find(id)
-        @categories = @contest.categories
     end
     
     def new 

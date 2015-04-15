@@ -81,12 +81,16 @@
         <table class="table table-striped">
             <tr>
                 <th>Name</th>
+                <th>Category</th>
                 <th>Actions</th>
             </tr>
             <% @contest.projects.each do |project| %>
             <tr>
                 <th>
                     <%= link_to project.name, contest_project_path(@contest, project)%>
+                </th>
+                <th>
+                  <%= project.category.name %>
                 </th>
                 <th>
                     
