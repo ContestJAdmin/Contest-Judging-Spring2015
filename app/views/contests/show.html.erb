@@ -90,7 +90,7 @@
                     <%= link_to project.name, contest_project_path(@contest, project)%>
                 </th>
                 <th>
-                  <%= project.category.name %>
+                  <%= project.category ? project.category.name :  "No category"%>
                 </th>
                 <th>
                     
