@@ -22,9 +22,11 @@
               </div>
               <div id="collapseOne<%= judge.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne<%= judge.id %>">
                 <div class="panel-body">
+                  <table class="table table-striped">
                     <% @judges_projects[judge.id].each do |project| %>
-                      <%= project.name %>
+                    <tr><td><%= project.name %></td></tr>
                     <% end %>
+                  </table>
                 </div>
               </div>
             </div>
@@ -53,9 +55,11 @@
               </div>
               <div id="collapseTwo<%= project.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo<%= project.id %>">
                 <div class="panel-body">
+                  <table class="table table-striped">
                     <% @projects_judges[project.id].each do |judge| %>
-                      <%= judge.name %>
+                    <tr><td><%= judge.name %></td></tr>
                     <% end %>
+                  </table>
                 </div>
               </div>
             </div>
