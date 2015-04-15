@@ -1,3 +1,4 @@
+<%= button_to 'Back', 'javascript:history.go(-1);' %>
 <% for project in Project.all %>  
     <div>  
       <%= check_box_tag "user[project_ids][]", project.id, @user.projects.include?(project) %>  

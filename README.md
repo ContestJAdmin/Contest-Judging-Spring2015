@@ -7,3 +7,14 @@ CSCE 606 Project, Team Madagascar : Contest Judging - To support many judges (co
 Spring 2015:
 CSCE 431 Project
 Team BAAAMM
+
+===============
+To Compile
+===============
+$ rake db:migrate
+$ rake db:seed
+
+===============
+To Run
+===============
+$ rails s -b $IP -p $PORT
