@@ -7,6 +7,10 @@ class ContestsController < ApplicationController
     def show
         id = params[:id]
         @contest = Contest.find(id)
+        @categories_projects = {}
+        @contest.categories.each do |category|
+            @categories_projects[category.id] = Category.find(category.id).projects
+        end
     end
     
     def new 

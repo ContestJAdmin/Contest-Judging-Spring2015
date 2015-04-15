@@ -11,9 +11,9 @@
       </a>
     </div>
     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body css-table">
+      <div class="panel-body">
         <% @judges.each do |judge| %>
-          <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+          <div id="accordion2" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingOne<%= judge.id %>">
                 <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne<%= judge.id %>" aria-expanded="false" aria-controls="collapseOne<%= judge.id %>">
@@ -24,14 +24,16 @@
                 <div class="panel-body">
                   <table class="table table-striped">
                     <% @judges_projects[judge.id].each do |project| %>
-                    <tr><td><%= project.name %></td></tr>
+                      <tr><td><%= project.name %></td></tr>
                     <% end %>
                   </table>
+                  <%= link_to 'Assign/Unassign Projects', judge %>
                 </div>
               </div>
             </div>
           </div>
         <% end %>
+        <br>
       </div>
     </div>
   </div>
@@ -46,7 +48,7 @@
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
         <% @projects.each do |project| %>
-          <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+          <div id="accordion2" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingTwo<%= project.id %>">
                 <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo<%= project.id %>" aria-expanded="false" aria-controls="collapseTwo<%= project.id %>">
