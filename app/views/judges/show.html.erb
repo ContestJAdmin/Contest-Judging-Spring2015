@@ -1,78 +1,35 @@
 <%= button_to 'Back', 'javascript:history.go(-1);' %>
 <h1>Judges and Projects mapping</h1>
 
-<% @tests.each do |test| %>
-<div>
-  <%= test.location %>
-</div>
-<% end %>
-
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
-      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
         <h4 class="panel-title">
           Projects per Judge
         </h4>
       </a>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-        <table class="table table-striped">
-            <tr>
-                <th>Judge Name &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</th>
-                <th>Judge Email &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</th>
-                <th>Number of projects assigned</th>
-            </tr>
-            <% @jps.each do |jp| %>
-            <tr>
-                <td> <%= jp.user_name %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
-                <td> <%= jp.email %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
-                <td> <%= jp.total_proj %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
-            </tr>     
-            <% end %>
-        </table>
-        
-        <!-- BELOW IS NESTED ACCORDION EXAMPLE CODE FOR JUDGE-PROJECT MAPPING  -->
-        
-        <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOneOne">
-              <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOneOne" aria-expanded="false" aria-controls="collapseOneOne">
-                <h5 class="panel-title">
-                  please?
-                </h5>
-              </a>
-            </div>
-            <div id="collapseOneOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOneOne">
-              <div class="panel-body">
-                <table class="table table-striped">
-                    
-                </table>
+        <% @judges.each do |judge| %>
+          <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingOne<%= judge.id %>">
+                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne<%= judge.id %>" aria-expanded="false" aria-controls="collapseOne<%= judge.id %>">
+                  <%= judge.name %> (<%= judge.email %>) is assigned <%= @judges_projects[judge.id].size %> project(s)
+                </a>
+              </div>
+              <div id="collapseOne<%= judge.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne<%= judge.id %>">
+                <div class="panel-body">
+                    <% @judges_projects[judge.id].each do |project| %>
+                      <%= project.name %>
+                    <% end %>
+                </div>
               </div>
             </div>
           </div>
-          
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOneTwo">
-              <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOneTwo" aria-expanded="false" aria-controls="collapseOneTwo">
-                <h5 class="panel-title">
-                  okay!
-                </h5>
-              </a>
-            </div>
-            <div id="collapseOneTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOneTwo">
-              <div class="panel-body">
-                <table class="table table-striped">
-                    
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ABOVE IS NESTED ACCORDION EXAMPLE CODE FOR JUDGE-PROJECT MAPPING  -->
-        
+        <% end %>
       </div>
     </div>
   </div>
@@ -86,19 +43,24 @@
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-        <h3>Categories</h3>
-        <table class="table table-striped"> 
-            <tr>
-                <th>Project Name &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</th>
-                <th>Number of judges assigned</th>
-            </tr>
-            <% @pjs.each do |pj| %>
-            <tr>
-                <td> <%= pj.proj_name %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
-                <td> <%= pj.total_judge %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
-            </tr>     
-            <% end %>
-        </table>
+        <% @projects.each do |project| %>
+          <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingTwo<%= project.id %>">
+                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo<%= project.id %>" aria-expanded="false" aria-controls="collapseTwo<%= project.id %>">
+                  <%= project.name %> is assigned to <%= @projects_judges[project.id].size %> judge(s)
+                </a>
+              </div>
+              <div id="collapseTwo<%= project.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo<%= project.id %>">
+                <div class="panel-body">
+                    <% @projects_judges[project.id].each do |judge| %>
+                      <%= judge.name %>
+                    <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
