@@ -3,8 +3,9 @@
 </h1>
 <div>
 <%= form_for([@contest, @question_type]) do |f| %>
-    <%= render 'fields', :f => f %>
-    <%= f.submit "Create" %>
+    <%= f.label :question_type %>
+    <%= f.text_field :question_type %>
+    <%= f.submit "Create" %> 
 <% end %>
 </div>
 

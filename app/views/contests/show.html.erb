@@ -121,14 +121,14 @@
                     <%= type.question_type %>&nbsp;
                 </th>
                 <th>
-                    <%= link_to 'Show', contest_question_type_path(type.contest_id, type) %>
-                    <%= link_to 'Edit', edit_contest_question_type_path(type.question_type, type.contest_id)%>
-                    <%= link_to 'Destroy', contest_question_type_path(type, type.contest_id), :confirm => 'Are you sure?', :method => :delete %>
+                    <%= link_to 'Show', contest_question_type_path(@contest, type) %>
+                    <%= link_to 'Edit', edit_contest_question_type_path(@contest, type)%>
+                    <%= link_to 'Destroy', contest_question_type_path(@contest, type), :confirm => 'Are you sure?', :method => :delete %>
                 </th>
             </tr>
             <% end %>   
         </table>
-        <%= link_to 'Add Question Types', contest_question_types_path(@contest) %><br/>
+        <%= link_to 'Add Question Types', new_contest_question_type_path(@contest) %><br/>
       </div>
     </div>
   </div>

@@ -42,7 +42,7 @@ class QuestionTypesController < ApplicationController
         @question_type = @contest.question_types.find(params[:id])
         if @question_type.update_attributes(question_type_params)
             flash[:success] = "QuestionType Updated"
-            redirect_to @question_type
+            redirect_to contest_path(@contest)
         else
             render 'edit'
         end
@@ -52,10 +52,10 @@ class QuestionTypesController < ApplicationController
         @question_type = @contest.question_types.find(params[:id])
         @question_type.destroy
         flash[:success] = "Question Type Deleted"
-        redirect_to contest_question_types_path
+        redirect_to contest_path(@contest)
     end
     
     def question_type_params
-        params.require(:question_type).permit(:question_type, :contest_id)
+        params.require(:question_type).permit(:question_type)
     end
 end

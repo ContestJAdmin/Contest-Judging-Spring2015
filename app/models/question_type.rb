@@ -1,6 +1,6 @@
 class QuestionType < ActiveRecord::Base
     def question_type_params
-        params.require(:question_type).permit(:question_type, :contest_id)
+        params.require(:question_type).permit(:question_type)
     end
     
     belongs_to :contest
