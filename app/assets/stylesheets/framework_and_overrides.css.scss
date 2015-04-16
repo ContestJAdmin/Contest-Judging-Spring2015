@@ -82,7 +82,7 @@ section {
 }
 
 // Alert
-.alert {
+div.alert {
   padding: 0px;
   border-color: #CCC;
   #flash_success {
@@ -99,16 +99,17 @@ section {
   }
 }
 
-// Jumbotron
-
-.jumbotron h1 {
-  font-size: 30px;
-}
-
 // Accordian
 
-.panel-heading {
+div.panel-heading {
   padding: 0px;
+}
+.panel-collapse .panel-heading {
+  padding: 0px;
+  a {
+    padding: 10px 15px;
+    display: block;
+  }
 }
 .panel-title {
   padding: 10px 15px;
