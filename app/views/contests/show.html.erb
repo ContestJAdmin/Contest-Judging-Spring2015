@@ -93,15 +93,19 @@
             <tr>
                 <th>Name</th>
                 <th>Category</th>
+                <th>Location</th>
                 <th>Actions</th>
             </tr>
             <% @contest.projects.each do |project| %>
             <tr>
                 <th>
-                    <%= link_to project.name, contest_project_path(@contest, project)%>
+                    <%= project.name %>
                 </th>
                 <th>
                   <%= project.category ? project.category.name :  "No category"%>
+                </th>
+                <th>
+                  <%= project.location %>
                 </th>
                 <th>
                     

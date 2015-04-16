@@ -39,10 +39,24 @@ class ProjectsController < ApplicationController
         else
             render 'new'
         end
-     end
+    end
 
     def self.get_project_details(id)
         return Project.find(id)
+    end
+    
+    def edit
+        @project = Project.find(params[:id])
+    end
+    
+    def update
+        @project = Project.find(params[:id])
+        if @project.update_attributes(project_params)
+            flash[:success] = "Project Updated"
+            redirect_to :back
+        else
+            render 'projects/edit'
+        end
     end
     
     def destroy

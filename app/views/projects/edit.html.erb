@@ -1,0 +1,11 @@
+<%= button_to 'Back', Contest.find(params[:contest_id]), :method => :get %>
+<h1>
+    Edit Project
+</h1>
+<div>
+<%= form_for ([@contest, @project]) do |f| %>
+    <%= render 'fields', :f => f %>
+    <%= f.submit "Update"%>
+<% end %>
+</div>
+	
