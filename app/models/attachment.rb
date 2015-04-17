@@ -14,6 +14,10 @@ class Attachment < ActiveRecord::Base
       @project = contest.projects.build
       @project.name = row[0]
       @project.location = row[1]
+      if !Category.exists?("name"=> row[2])
+        create_category(contest, row[2])
+      end
+      @project.category_id = Category.find_by_name(row[2]).id
       @project.save
       puts @project.inspect
     end

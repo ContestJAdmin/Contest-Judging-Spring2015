@@ -29,4 +29,10 @@ class AttachmentsController < ApplicationController
         render contest_path(@contest)
     end
   end
+  
+  def create_category(contest, category_name)
+    @category = @contest.categories.build
+    @category.name = category_name
+    @category.save
+  end
 end
