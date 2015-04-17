@@ -22,6 +22,12 @@ class Attachment < ActiveRecord::Base
       puts @project.inspect
     end
   end
+  
+  def create_category(contest, category_name)
+    @category = @contest.categories.build
+    @category.name = category_name
+    @category.save
+  end
 
   # def filename=(new_filename)
   #   write_attribute("filename", sanitize_filename(new_filename))
