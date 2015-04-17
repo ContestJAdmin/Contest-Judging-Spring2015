@@ -14,7 +14,6 @@ class Attachment < ActiveRecord::Base
       @project = contest.projects.build
       @project.name = row[0]
       @project.location = row[1]
-      @project.category_id = row[2]
       @project.save
       puts @project.inspect
     end

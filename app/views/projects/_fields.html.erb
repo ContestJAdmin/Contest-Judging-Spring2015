@@ -6,6 +6,6 @@
 <%= f.text_field :location, :required => true %>
 <br/>
 <%= f.label :category%>
-<%= f.collection_select :category_id, Category.all, :name, :name %>
+<%= f.collection_select :category_id, Category.all, :id, :name %>
 <br/>
 
