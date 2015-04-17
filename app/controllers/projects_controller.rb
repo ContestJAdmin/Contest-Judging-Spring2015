@@ -32,7 +32,8 @@ class ProjectsController < ApplicationController
     end
   
     def create
-         @project = @contest.projects.build(project_params)
+        @project = @contest.projects.build(project_params)
+        puts project_params
         if @project.save
             flash[:success] = "Successfull"
             redirect_to @contest
