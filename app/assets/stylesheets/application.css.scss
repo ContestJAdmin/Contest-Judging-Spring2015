@@ -27,3 +27,6 @@ body {
     font-size: 35px;
 }
 
+.has-error .form-control:focus {
+    outline-color: #555555;
+}
