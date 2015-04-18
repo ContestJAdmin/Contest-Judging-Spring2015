@@ -4,6 +4,9 @@
 
 $(document).on 'page:load', ->
   $('#new_attachment').validate
+    onkeyup: false,
+    onclick: false,
+    onfocusout: false,
     errorClass:'control-label help-inline',
     rules: 'attachment[attachment]':
       required: true
