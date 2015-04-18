@@ -9,10 +9,13 @@ $(document).on 'page:load', ->
       required: true
       extension: 'csv'
     messages: 'attachment[attachment]':
-      required: 'Please provide a CSV file'
-      extension: 'Only CSV files are allowed'
+      required: '&nbsp;- Required'
+      extension: '&nbsp;- Only .csv files are allowed'
     submitHandler: (form) ->
       form.submit()
+      return
+    errorPlacement: (error, element) ->
+      $(element).prev('.form-label').after(error)
       return
     highlight: (element) ->
       $(element).parent('div').addClass 'has-error'
@@ -21,3 +24,4 @@ $(document).on 'page:load', ->
       $(element).parent('div').removeClass 'has-error'
       return
   return
+  
