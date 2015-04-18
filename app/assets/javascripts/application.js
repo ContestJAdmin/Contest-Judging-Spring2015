@@ -16,6 +16,5 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require bootstrap-sprockets
-//= require_tree .
 //= require moment
 //= require bootstrap-datetimepicker
