@@ -2,15 +2,14 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
-  # Setup form validation on the #register-form element
+$(document).on 'page:load', ->
   $('#new_attachment').validate
     rules: 'attachment[attachment]':
       required: true
-      accept: 'csv'
+      extension: 'csv'
     messages: 'attachment[attachment]':
       required: 'Please provide a CSV file'
-      accept: 'Only CSV files are allowed'
+      extension: 'Only CSV files are allowed'
     submitHandler: (form) ->
       form.submit()
       return

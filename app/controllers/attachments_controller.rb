@@ -16,7 +16,12 @@ class AttachmentsController < ApplicationController
   end
 
   def create
-    return if params[:attachment].blank?
+    if params[:attachment].blank?
+      flash[:error] = "There was no attachment."
+      redirect_to new_contest_attachment_path(@contest)
+      return
+    end
+    
     puts params.inspect
     @attachment = Attachment.new
     @attachment.uploaded_file(@contest, params)
