@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).on 'page:load', ->
+ready = ->
   $('#new_attachment').validate
     onkeyup: false,
     onclick: false,
@@ -28,3 +28,5 @@ $(document).on 'page:load', ->
       return
   return
   
+$(document).ready(ready)
+$(document).on('page:load', ready)
