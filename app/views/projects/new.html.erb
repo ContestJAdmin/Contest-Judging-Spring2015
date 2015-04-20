@@ -2,9 +2,9 @@
 <h1>
     Add new Projects
 </h1>
-<div>
-<%= form_for([@contest, @project]) do |f| %>
+<div class="row">
+<%= form_for([@contest, @project], :html => {class: "col-xs-3"}) do |f| %>
     <%= render 'fields', :f => f %>
-    <%= f.submit "Create"%>
+    <%= f.submit "Create", class: "btn btn-default" %>
 <% end %>
 </div>
