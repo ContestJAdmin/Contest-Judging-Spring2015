@@ -12,7 +12,7 @@
 <% @questions.each do |q| %>
     <tr>
         <td> <%= q.question %></td>
-        <td> <%= QuestionType.find(q.question_type_id).question_type %></td>
+        <td> <%= q.question_type.question_type %></td>
         <td> <%= q.maximum_score %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
         <td> <%= link_to 'Show',q %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
          <%= link_to 'Edit', edit_question_path(q)%>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;

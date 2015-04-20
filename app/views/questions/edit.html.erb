@@ -2,10 +2,9 @@
 <h1>
     Edit Question
 </h1>
-
-<div>
-<%= form_for(@question) do |f| %>
+<div class="row">
+<%= form_for(@question, html: {class: "col-xs-3"}) do |f| %>
     <%= render 'fields', :f => f %>
-    <%= f.submit "Update"%>
+    <%= f.submit "Update", class: "btn btn-default" %>
 <% end %>
 </div>
