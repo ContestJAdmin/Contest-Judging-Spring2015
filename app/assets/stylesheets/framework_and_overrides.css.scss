@@ -119,3 +119,8 @@ div.panel-heading {
 h1 {
   font-size: 18px;
 }
+
+// for the dumb devise checkbox margin
+input#user_remember_me { 
+  margin-left: 0px; 
+} 

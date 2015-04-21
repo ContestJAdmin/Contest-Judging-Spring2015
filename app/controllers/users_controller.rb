@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @projects = Project.all;
     unless @user == current_user || current_user.admin?
       redirect_to :back, :alert => "Access denied."
     end
@@ -15,12 +16,13 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+    @projects = Project.all;
   end
   
   def update
     params[:user][:project_ids] ||= []
     @user = User.find(params[:id])
-     if @user.update_attributes(params[:user].permit!)
+    if @user.update_attributes(params[:user].permit!)
       flash[:notice] = 'updated success'
       redirect_to :action =>'index',:id =>@user
     else
