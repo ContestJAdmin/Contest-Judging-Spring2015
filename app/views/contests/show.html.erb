@@ -118,12 +118,43 @@
       </div>
     </div>
   </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingFour">
+      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        <h4 class="panel-title">
+          Question Types
+        </h4>
+      </a>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+      <div class="panel-body">
+        <h3>Question Types</h3>
+        <table class="table table-striped">
+           <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+            <% @contest.question_types.each do |type| %>
+            <tr>
+                <th>
+                    <%= type.question_type %>&nbsp;
+                </th>
+                <th>
+                    <%= link_to 'Show', contest_question_type_path(@contest, type) %>
+                    <%= link_to 'Edit', edit_contest_question_type_path(@contest, type)%>
+                    <%= link_to 'Destroy', contest_question_type_path(@contest, type), :confirm => 'Are you sure?', :method => :delete %>
+                </th>
+            </tr>
+            <% end %>   
+        </table>
+        <%= link_to 'Add Question Types', new_contest_question_type_path(@contest) %><br/>
+      </div>
+    </div>
+  </div>
 </div>
 <ol class="breadcrumb">
   <li role="presentation"><%= link_to 'Upload Projects File', new_contest_attachment_path(@contest) %></li>
   <li role="presentation"><%= link_to 'Add Judges to projects', controller: "users" %></li>
   <li role="presentation"><%= link_to 'Download Scores', controller: "scores" %></li>
-  <li role="presentation"><%= link_to 'Add Question Types', question_types_path %></li>
-  <li role="presentation"><%= link_to 'Add Questions', questions_path %></li>
   <li role="presentation"><%= link_to 'Judge Project Mapping', action:'show' , controller:'judges' %></li>
 </ul>

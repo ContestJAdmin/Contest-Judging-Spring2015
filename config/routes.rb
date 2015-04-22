@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :attachments
     resources :projects do 
     end
+    resources :question_types do 
+            resources :questions
+    end
   end
   post '/contests/:contest_id/categories/:id/attach', to: 'categories#attach', :as => :attach
   post '/contests/:contest_id/categories/:id/unattach', to: 'categories#unattach', :as => :unattach
