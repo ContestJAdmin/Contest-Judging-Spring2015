@@ -3,16 +3,14 @@
     <h2>Welcome Judge</h2>
     <br/>
     <h4>Which project would you like to evaluate?</h4>
-    <div class="column">
-      <table class="table">
-        <tbody>
-          <% @projects.each do |project| %>
-            <tr>
-              <%= render project %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+    <table class="table">
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <%= render project %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
