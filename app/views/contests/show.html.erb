@@ -90,31 +90,31 @@
       <div class="panel-body">
         <h3>Projects</h3>
         <table class="table table-striped">
-            <tr>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Location</th>
-                <th>Actions</th>
-            </tr>
-            <% @contest.projects.each do |project| %>
-            <tr>
-                <th>
-                    <%= project.name %>
-                </th>
-                <th>
-                  <%= project.category ? project.category.name :  "No category"%>
-                </th>
-                <th>
-                  <%= project.location %>
-                </th>
-                <th>
-                    
-                    <%= link_to 'Edit', edit_contest_project_path(@contest, project)%>
-                    <%= link_to 'Delete', [@contest, project], :method => :delete, data: {confirm: "Are you sure?"} %>
-                </th>
-            <% end %>   
+          <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Location</th>
+              <th>Actions</th>
+          </tr>
+          <% @contest.projects.each do |project| %>
+          <tr>
+            <th>
+              <%= project.name %>
+            </th>
+            <th>
+              <%= project.category ? project.category.name :  "No category"%>
+            </th>
+            <th>
+              <%= project.location %>
+            </th>
+            <th>
+              <%= link_to 'Edit', edit_contest_project_path(@contest, project)%>
+              <%= link_to 'Delete', [@contest, project], :method => :delete, data: {confirm: "Are you sure?"} %>
+            </th>
+          <% end %>   
         </table>
-        <%= link_to 'Add project', new_contest_project_path(@contest) %><br/>
+        <%= link_to 'View Unassigned Projects', unassigned_projects_path(@contest) %><br/>
+        <%= link_to 'Add Project', new_contest_project_path(@contest) %><br/>
       </div>
     </div>
   </div>
