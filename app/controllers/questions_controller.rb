@@ -1,5 +1,16 @@
 class QuestionsController < ApplicationController
     before_filter :authenticate_user!
+    before_filter :has_question_type
+    
+    protected
+    def has_question_type
+        unless(@question_type = QuestionType.find(params[:question_type_id]))
+            flash[:error] = "Question must be for an existing question_type"
+            redirect_to contest_question_type_path(@question_type.contest_id, @question_type)
+        end
+    end
+    
+    public
     def index
         @questions = Question.all
     end
@@ -9,38 +20,38 @@ class QuestionsController < ApplicationController
         @question = Question.find(id)
     end
     
-    def new 
-        @question = Question.new
+   def new 
+        @question = @question_type.questions.build
     end
     
     def create 
-        @question = Question.new(question_params)
+        @question = @question_type.questions.build(question_params)
         if @question.save
-            flash[:success] = "Successfull"
-            redirect_to @question
+            flash[:success] = "Successful"
+            redirect_to contest_question_type_path(@question_type.contest_id, @question_type)
         else
             render 'new'
         end
     end
     
     def edit 
-        @question = Question.find(params[:id])
+        @question = @question_type.questions.find(params[:id])
     end
     
     def update
-        @question = Question.find(params[:id])
+        @question = @question_type.questions.find(params[:id])
         if @question.update_attributes(question_params)
             flash[:success] = "Question Updated"
-            redirect_to @question
+            redirect_to contest_question_type_path(@question_type.contest_id, @question_type)
         else
             render 'edit'
         end
     end
     
     def destroy
-        Question.find(params[:id]).destroy
+        @question = @question_type.questions.find(params[:id]).destroy
         flash[:success] = "Question Deleted"
-        redirect_to questions_path
+        redirect_to contest_question_type_path(@question_type.contest_id, @question_type)
     end
     
     def question_params

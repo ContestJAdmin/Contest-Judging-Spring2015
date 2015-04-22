@@ -13,8 +13,10 @@
         <td> <%= @contest.name %></td>
         <td> <%= link_to 'Edit', edit_contest_question_type_path(@contest, @question_type)%>
              <%= link_to 'Destroy', contest_question_type_path(@contest, @question_type), :confirm => 'Are you sure?', :method => :delete %></td>
+
     </tr>     
 </table>
 
 <br/>
-<%= link_to 'Add Questions Types', contest_question_types_path %>
+<li role="presentation"><%= link_to 'Add Questions Types', contest_question_types_path %></li>
+<li role="presentation"><%= link_to 'Add Questions', contest_question_type_questions_path(@contest, @question_type) %></li>

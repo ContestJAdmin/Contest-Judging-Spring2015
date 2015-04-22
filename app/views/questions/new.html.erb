@@ -2,9 +2,9 @@
     Add new Question
 </h1>
 <div>
-<%= form_for(@question) do |f| %>
+<%= form_for @question, url: contest_question_type_questions_path(@question_type.contest_id, @question_type) do |f| %>
     <%= render 'fields', :f => f %>
-    <%= f.submit "Create" %>
+    <%= f.submit "Create"%>
 <% end %>
 </div>
 

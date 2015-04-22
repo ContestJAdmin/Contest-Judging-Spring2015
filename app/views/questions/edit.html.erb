@@ -3,7 +3,7 @@
 </h1>
 
 <div>
-<%= form_for(@question) do |f| %>
+<%= form_for @question, url: contest_question_type_question_path(@question_type.contest_id, @question_type, @question.id) do |f| %>
     <%= render 'fields', :f => f %>
     <%= f.submit "Update"%>
 <% end %>
