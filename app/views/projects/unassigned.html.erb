@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <h2>Unassigned Projects</h2>
+      <table class="table table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Location</th>
+        <th>Actions</th>
+      </tr>
+      <% @projects.each do |project| %>
+      <tr>
+        <td><%= link_to project.name, project %></td>
+        <td><%= project.category ? project.category.name :  "No category"%></td>
+        <td><%= project.location %></td>
+        <td>
+          <%= link_to 'Edit', edit_contest_project_path(@contest, project)%>
+          <%= link_to 'Delete', [@contest, project], :method => :delete, data: {confirm: "Are you sure?"} %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+</div>
+</div>

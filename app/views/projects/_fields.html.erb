@@ -6,6 +6,6 @@
 <%= f.text_field :location, :required => true %>
 <br/>
 <%= f.label :category%>
-<%= f.collection_select :category_id, Category.all, :id, :name %>
+<%= f.collection_select :category_id, @project.contest.categories, :id, :name, :include_blank => "No Category" %>
 <br/>
 
