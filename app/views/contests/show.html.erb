@@ -50,12 +50,12 @@
         <% @contest.categories.each do |category| %>
           <div id="accordion2" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingOne<%= category.id %>">
-                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne<%= category.id %>" aria-expanded="false" aria-controls="collapseOne<%= category.id %>">
+              <div class="panel-heading" role="tab" id="headingTwo<%= category.id %>">
+                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo<%= category.id %>" aria-expanded="false" aria-controls="collapseTwo<%= category.id %>">
                   <%= category.name %>
                 </a>
               </div>
-              <div id="collapseOne<%= category.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne<%= category.id %>">
+              <div id="collapseTwo<%= category.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo<%= category.id %>">
                 <div class="panel-body">
                   <table class="table table-striped">
                     <% if @categories_projects[category.id].size == 0 %>
@@ -74,7 +74,7 @@
           </div>
         <% end %>
         <br>
-        <%= link_to 'New Category', new_contest_category_path(@contest,@category) %>
+        <%= link_to 'New Category', new_contest_category_path(@contest) %>
       </div>
     </div>
   </div>
@@ -129,25 +129,45 @@
     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
       <div class="panel-body">
         <h3>Question Types</h3>
-        <table class="table table-striped">
-           <tr>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-            <% @contest.question_types.each do |type| %>
-            <tr>
-                <th>
-                    <%= type.question_type %>&nbsp;
-                </th>
-                <th>
-                    <%= link_to 'Show', contest_question_type_path(@contest, type) %>
-                    <%= link_to 'Edit', edit_contest_question_type_path(@contest, type)%>
-                    <%= link_to 'Destroy', contest_question_type_path(@contest, type), :confirm => 'Are you sure?', :method => :delete %>
-                </th>
-            </tr>
-            <% end %>   
-        </table>
-        <%= link_to 'Add Question Types', new_contest_question_type_path(@contest) %><br/>
+        
+        <% @contest.question_types.each do |question_type| %>
+          <div id="accordion4" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingFour<%= question_type.id %>">
+                <a data-toggle="collapse" data-parent="#accordion4" href="#collapseFour<%= question_type.id %>" aria-expanded="false" aria-controls="collapseFour<%= question_type.id %>">
+                  <%= question_type.question_type %>
+                </a>
+              </div>
+              <div id="collapseFour<%= question_type.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour<%= question_type.id %>">
+                <div class="panel-body">
+                  <table class="table table-striped">
+                    <tr>
+                      <th>Question</th>
+                      <th>Actions</th>
+                    </tr>
+                    <% question_type.questions.each do |question| %>
+                      <tr>
+                        <td><%= question.question %></td>
+                        <td>
+                          <%= link_to 'Edit', edit_contest_question_type_question_path(@contest, question_type, question)%>
+                          <%= link_to 'Delete', [@contest, question_type, question], :method => :delete, data: {confirm: "Are you sure?"} %>
+                        </td>
+                      </tr>
+                    <% end %>
+                    <tr>
+                      <td><%= link_to 'New Question', new_contest_question_type_question_path(@contest, question_type) %></td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <%= link_to 'Edit Question Type', edit_contest_question_type_path(@contest, question_type)%><br/>
+                  <%= link_to 'Delete Question Type', [@contest, question_type], :method => :delete, data: {confirm: "Are you sure?"} %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <br>
+        <%= link_to 'New Question Type', new_contest_question_type_path(@contest) %>
       </div>
     </div>
   </div>
