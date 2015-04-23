@@ -36,7 +36,7 @@ When /^I login as (.*)$/ do |role|
     
     
     #Add projects to the contest
-    click_link('Add Project')
+    click_link('New Project')
     fill_in(:project_name, :with=>'P1')
     fill_in(:project_location, :with=>'A110')
     click_button('Create')
