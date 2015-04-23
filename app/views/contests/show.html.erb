@@ -53,6 +53,7 @@
               <div class="panel-heading" role="tab" id="headingOne<%= category.id %>">
                 <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne<%= category.id %>" aria-expanded="false" aria-controls="collapseOne<%= category.id %>">
                   <%= category.name %>
+                  <h6 align="right">Total Projects: <%= @categories_projects[category.id].size %></h6>
                 </a>
               </div>
               <div id="collapseOne<%= category.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne<%= category.id %>">
