@@ -3,17 +3,28 @@
 <p>Name: <%= @user.name if @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
 
+<p>Location: </p><input id="searchbox" type="text"><button id="searchbutton">Search</button>
+
 <p>
 <%= form_for @user  do |f| %>
   <% if Project.all.length < 1 %>
    There are currently no projects to assign. 
   <% end %>
-  <% for project in Project.all %>  
-      <div>  
+  <table class="table table-striped">
+    <tr>
+      <th style="width:66%">Project Name</th>
+      <th style="width:33%">Project Location</th>
+    </tr>
+  <% for project in Project.all %> 
+    <tr class='project <%= project.location.downcase %>'>
+      <th>
         <%= check_box_tag "user[project_ids][]", project.id, @user.projects.include?(project) %>  
-        <%= project.name %>  
-      </div>  
+        <%= project.name %>
+      </th>
+      <th><%= project.location %></th>
+    </tr>
   <% end %>
+  </table>
   <% if Project.all.length > 0 %>
     <%= f.submit 'Update' %>
   <% end %>  
