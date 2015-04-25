@@ -97,6 +97,9 @@ div.alert {
     border-color: #ebccd1;
     color: #a94442;
   }
+  #flash_notice {
+    padding: 15px;
+  }
 }
 
 // Accordian
@@ -113,6 +116,11 @@ div.panel-heading {
 }
 .panel-title {
   padding: 10px 15px;
+}
+.panel-heading a h6 {
+  display: inline-block;
+  float: right;
+  margin-top: 5px;
 }
 
 // Headings
