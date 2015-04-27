@@ -46,50 +46,48 @@
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
         <h3>Project Categories</h3>
-        <div id="accordion2" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingTwoNoCategory">
-                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwoNoCategory" aria-expanded="false" aria-controls="collapseTwoNoCategory">
-                  No Category
-                  <h6 align="right">Total Projects: <%= @contest.projects.where("category_id IS NULL").count %></h6>
-                </a>
-              </div>
-              <div id="collapseTwoNoCategory" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwoNoCategory">
-                <div class="panel-body">
-                  <table class="table table-striped">
+        <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwoNoCategory">
+              <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwoNoCategory" aria-expanded="false" aria-controls="collapseTwoNoCategory">
+                No Category
+                <h6 align="right">Total Projects: <%= @contest.projects.where("category_id IS NULL").count %></h6>
+              </a>
+            </div>
+            <div id="collapseTwoNoCategory" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwoNoCategory">
+              <div class="panel-body">
+                <table class="table table-striped">
+                  <tr>
+                      <th>Name</th>
+                      <th>Category</th>
+                      <th>Location</th>
+                      <th>Actions</th>
+                  </tr>
+                  <% if @contest.projects.where("category_id IS NULL").count == 0 %>
+                    <tr><th>No projects in this category</th><th></th><th></th><th></th></tr>
+                  <% end %>
+                  <% @contest.projects.where("category_id IS NULL").each do |project| %>
                     <tr>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Location</th>
-                        <th>Actions</th>
+                      <th>
+                        <%= project.name %>
+                      </th>
+                      <th>
+                        <%= project.category ? project.category.name :  "No category"%>
+                      </th>
+                      <th>
+                        <%= project.location %>
+                      </th>
+                      <th>
+                        <%= link_to 'Edit', edit_contest_project_path(@contest, project)%>
+                        <%= link_to 'Delete', [@contest, project], :method => :delete, data: {confirm: "Are you sure?"} %>
+                      </th>
                     </tr>
-                    <% if @contest.projects.where("category_id IS NULL").count == 0 %>
-                      <tr><th>No projects in this category</th><th></th><th></th><th></th></tr>
-                    <% end %>
-                    <% @contest.projects.where("category_id IS NULL").each do |project| %>
-                      <tr>
-                        <th>
-                          <%= project.name %>
-                        </th>
-                        <th>
-                          <%= project.category ? project.category.name :  "No category"%>
-                        </th>
-                        <th>
-                          <%= project.location %>
-                        </th>
-                        <th>
-                          <%= link_to 'Edit', edit_contest_project_path(@contest, project)%>
-                          <%= link_to 'Delete', [@contest, project], :method => :delete, data: {confirm: "Are you sure?"} %>
-                        </th>
-                      </tr>
-                    <% end %>
-                  </table>
-                </div>
+                  <% end %>
+                </table>
               </div>
             </div>
           </div>
-        <% @contest.categories.each do |category| %>
-          <div id="accordion2" role="tablist" aria-multiselectable="true">
+          <% @contest.categories.each do |category| %>
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingTwo<%= category.id %>">
                 <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo<%= category.id %>" aria-expanded="false" aria-controls="collapseTwo<%= category.id %>">
@@ -134,9 +132,8 @@
                 </div>
               </div>
             </div>
-          </div>
-        <% end %>
-        <br>
+          <% end %>
+        </div>
         <ul class="breadcrumb">
           <li role="presentation"><%= link_to 'New Category', new_contest_category_path(@contest,@category) %></li>
           <li role="presentation"><%= link_to 'New Project', new_contest_project_path(@contest) %></li>
@@ -156,9 +153,8 @@
     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
       <div class="panel-body">
         <h3>Question Types</h3>
-        
-        <% @contest.question_types.each do |question_type| %>
-          <div id="accordion4" role="tablist" aria-multiselectable="true">
+        <div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
+          <% @contest.question_types.each do |question_type| %>
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingFour<%= question_type.id %>">
                 <a data-toggle="collapse" data-parent="#accordion4" href="#collapseFour<%= question_type.id %>" aria-expanded="false" aria-controls="collapseFour<%= question_type.id %>">
@@ -191,10 +187,83 @@
                 </div>
               </div>
             </div>
-          </div>
-        <% end %>
-        <br>
+          <% end %>
+        </div>
         <%= link_to 'New Question Type', new_contest_question_type_path(@contest) %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingFive">
+      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        <h4 class="panel-title">
+          Judges
+        </h4>
+      </a>
+    </div>
+    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+      <div class="panel-body">
+        <h3>Project Categories</h3>
+        <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFiveNoCategory">
+              <a data-toggle="collapse" data-parent="#accordion5" href="#collapseFiveNoCategory" aria-expanded="false" aria-controls="collapseFiveNoCategory">
+                No Category
+                <h6 align="right">Total Judges: <%= @contest.users.where('category_id IS NULL').size %></h6>
+              </a>
+            </div>
+            <div id="collapseFiveNoCategory" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFiveNoCategory">
+              <div class="panel-body">
+                <table class="table table-striped">
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                  </tr>
+                  <% @contest.users.where('category_id IS NULL').each do |judge| %>
+                    <tr>
+                      <td><%= judge.name %></td>
+                      <td><%= judge.email %></td>
+                      <td>
+                        please?
+                      </td>
+                    </tr>
+                  <% end %>
+                </table>
+              </div>
+            </div>
+          </div>
+          <% @contest.categories.each do |category| %>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingFive<%= category.id %>">
+                <a data-toggle="collapse" data-parent="#accordion5" href="#collapseFive<%= category.id %>" aria-expanded="false" aria-controls="collapseFive<%= category.id %>">
+                  <%= category.name %>
+                  <h6 align="right">Total Judges: <%= category.users.size %></h6>
+                </a>
+              </div>
+              <div id="collapseFive<%= category.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive<%= category.id %>">
+                <div class="panel-body">
+                  <table class="table table-striped">
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Action</th>
+                    </tr>
+                    <% category.users.each do |judge| %>
+                      <tr>
+                        <td><%= judge.name %></td>
+                        <td><%= judge.email %></td>
+                        <td>
+                          please?
+                        </td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
