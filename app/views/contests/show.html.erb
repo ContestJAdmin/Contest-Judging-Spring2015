@@ -218,14 +218,15 @@
                   <tr>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Action</th>
+                    <th>Actions</th>
                   </tr>
                   <% @contest.users.where('category_id IS NULL').each do |judge| %>
                     <tr>
-                      <td><%= judge.name %></td>
+                      <td><%= link_to judge.name, judge %></td>
                       <td><%= judge.email %></td>
                       <td>
-                        please?
+                        <%= link_to 'Assign Contest/Category', edit_user_path(judge) %>
+                        <%= link_to 'Delete', judge, :method => :delete, data: {confirm: "Are you sure?"} %>
                       </td>
                     </tr>
                   <% end %>
@@ -251,10 +252,11 @@
                     </tr>
                     <% category.users.each do |judge| %>
                       <tr>
-                        <td><%= judge.name %></td>
+                        <td><%= link_to judge.name, judge %></td>
                         <td><%= judge.email %></td>
                         <td>
-                          please?
+                          <%= link_to 'Assign Contest/Category', edit_user_path(judge) %>
+                          <%= link_to 'Delete', judge, :method => :delete, data: {confirm: "Are you sure?"} %>
                         </td>
                       </tr>
                     <% end %>

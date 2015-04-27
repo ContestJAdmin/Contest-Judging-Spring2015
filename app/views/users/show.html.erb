@@ -1,12 +1,14 @@
 <%= button_to 'Back', 'javascript:history.go(-1);' %>
-<h3>Judges</h3>
-<p>Name: <%= @user.name if @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
-
-<p>Location: </p><input id="searchbox" type="text"><button id="searchbutton">Search</button>
-
-<p>
-<%= form_for @user  do |f| %>
+<h4>Name: <%= @user.name if @user.name %></h4>
+<h4>Email: <%= @user.email if @user.email %></h4>
+</br>
+<div>
+  <label class="form-label">Search By Location: </label>
+  <input id="searchbox" type="text">
+  <button class="btn btn-default" id="searchbutton">Search</button>
+</div>
+</br>
+<%= form_for @user do |f| %>
   <% if @projects.length < 1 %>
    There are currently no projects to assign. 
   <% end %>
@@ -28,7 +30,6 @@
   <% if @projects.length > 0 %>
     <%= f.submit 'Update', class: "btn btn-default" %>
   <% end %>  
-</p>
 <% end %>
 
 
