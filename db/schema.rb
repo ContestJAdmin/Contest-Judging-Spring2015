@@ -62,12 +62,12 @@ ActiveRecord::Schema.define(version: 20141208063637) do
   create_table "question_types", force: true do |t|
     t.string  "question_type"
     t.integer "contest_id"
+    t.integer "weight"
   end
 
   create_table "questions", force: true do |t|
     t.integer "question_type_id"
     t.string  "question"
-    t.integer "maximum_score"
     t.string  "comment"
   end
 

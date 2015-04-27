@@ -3,7 +3,6 @@ class CreateQuestions < ActiveRecord::Migration
     create_table :questions do |t|
       t.references   :question_type
       t.string    'question'
-      t.integer   'maximum_score'
       t.string    'comment'
     end
   end

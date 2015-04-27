@@ -1,8 +1,7 @@
 <%= render 'shared/error_messages', :object => f.object%>
 <%= f.label :question_type %>
-<%= f.text_field :question_type %>
+<%= f.text_field :question_type, :required => true %>
 <br/>
-<%= f.label :contest_id%>
-<%= f.text_field :contest_id%>
-<br/>   
-
+<%= f.label :weight%>
+<%= f.number_field :weight, :required => true %>
+<br/>

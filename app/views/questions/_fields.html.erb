@@ -5,6 +5,3 @@
 <%= f.label :question_types%>
 <%= f.collection_select :question_type_id, QuestionType.all, :id, :question_type  %>
 <br/>   
-<%= f.label :maximum_score%>
-<%= f.number_field :maximum_score%>
-<br/>
