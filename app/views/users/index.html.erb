@@ -7,9 +7,9 @@
         <tbody>
           <% @users.each do |user| %>
           <% if !user.admin? %>
-              <tr>
-                <%= render user %>
-              </tr>
+            <tr>
+              <%= render user %>
+            </tr>
           <% end %>    
           <% end %>
         </tbody>
