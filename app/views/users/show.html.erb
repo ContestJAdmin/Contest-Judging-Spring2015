@@ -7,13 +7,13 @@
 
 <p>
 <%= form_for @user  do |f| %>
-  <% if projects.length < 1 %>
+  <% if @projects.length < 1 %>
    There are currently no projects to assign. 
   <% end %>
   <table class="table table-striped">
     <tr>
-      <th style="width:66%">Project Name</th>
-      <th style="width:33%">Project Location</th>
+      <th>Project Name</th>
+      <th>Project Location</th>
     </tr>
   <% for project in @projects %> 
     <tr class='project <%= project.location.downcase %>'>
