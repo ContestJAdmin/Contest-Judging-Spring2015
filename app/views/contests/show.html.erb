@@ -5,7 +5,7 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
-      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         <h4 class="panel-title">
           About
         </h4>
@@ -37,7 +37,7 @@
   </div>
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingTwo">
-      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+      <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
         <h4 class="panel-title">
          Project Categories
         </h4>
@@ -49,7 +49,7 @@
         <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
           <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingTwoNoCategory">
-              <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwoNoCategory" aria-expanded="false" aria-controls="collapseTwoNoCategory">
+              <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwoNoCategory" aria-expanded="false" aria-controls="collapseTwoNoCategory">
                 No Category
                 <h6 align="right">Total Projects: <%= @contest.projects.where("category_id IS NULL").count %></h6>
               </a>
@@ -90,7 +90,7 @@
           <% @contest.categories.each do |category| %>
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingTwo<%= category.id %>">
-                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo<%= category.id %>" aria-expanded="false" aria-controls="collapseTwo<%= category.id %>">
+                <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo<%= category.id %>" aria-expanded="false" aria-controls="collapseTwo<%= category.id %>">
                   <%= category.name %>
                   <h6 align="right">Total Projects: <%= @categories_projects[category.id].size %></h6>
                 </a>
@@ -144,7 +144,7 @@
   </div>
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingFour">
-      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+      <a class="panel-toggle" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
         <h4 class="panel-title">
           Question Types
         </h4>
@@ -157,7 +157,7 @@
           <% @contest.question_types.each do |question_type| %>
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingFour<%= question_type.id %>">
-                <a data-toggle="collapse" data-parent="#accordion4" href="#collapseFour<%= question_type.id %>" aria-expanded="false" aria-controls="collapseFour<%= question_type.id %>">
+                <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion4" href="#collapseFour<%= question_type.id %>" aria-expanded="false" aria-controls="collapseFour<%= question_type.id %>">
                   <%= question_type.question_type %>
                 </a>
               </div>
@@ -195,7 +195,7 @@
   </div>
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingFive">
-      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+      <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
         <h4 class="panel-title">
           Judges
         </h4>
@@ -207,7 +207,7 @@
         <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
           <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingFiveNoCategory">
-              <a data-toggle="collapse" data-parent="#accordion5" href="#collapseFiveNoCategory" aria-expanded="false" aria-controls="collapseFiveNoCategory">
+              <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion5" href="#collapseFiveNoCategory" aria-expanded="false" aria-controls="collapseFiveNoCategory">
                 No Category
                 <h6 align="right">Total Judges: <%= @contest.users.where('category_id IS NULL').size %></h6>
               </a>
@@ -237,7 +237,7 @@
           <% @contest.categories.each do |category| %>
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingFive<%= category.id %>">
-                <a data-toggle="collapse" data-parent="#accordion5" href="#collapseFive<%= category.id %>" aria-expanded="false" aria-controls="collapseFive<%= category.id %>">
+                <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion5" href="#collapseFive<%= category.id %>" aria-expanded="false" aria-controls="collapseFive<%= category.id %>">
                   <%= category.name %>
                   <h6 align="right">Total Judges: <%= category.users.size %></h6>
                 </a>
