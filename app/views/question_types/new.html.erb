@@ -2,14 +2,9 @@
 <h1>
     Add new Question Type
 </h1>
-<div>
-<%= form_for([@contest, @question_type]) do |f| %>
-    <%= f.label :question_type %>
-    <%= f.text_field :question_type %>
-    <%= f.submit "Create" %> 
+<div class="row">
+<%= form_for([@contest, @question_type], html: {class: "col-xs-3"}) do |f| %>
+    <%= render 'fields', :f => f %>
+    <%= f.submit "Create", class: "btn btn-default" %>
 <% end %>
 </div>
-
-    
-    
-   

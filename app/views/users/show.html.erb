@@ -7,7 +7,7 @@
 
 <p>
 <%= form_for @user  do |f| %>
-  <% if Project.all.length < 1 %>
+  <% if projects.length < 1 %>
    There are currently no projects to assign. 
   <% end %>
   <table class="table table-striped">
@@ -15,18 +15,18 @@
       <th style="width:66%">Project Name</th>
       <th style="width:33%">Project Location</th>
     </tr>
-  <% for project in Project.all %> 
+  <% for project in @projects %> 
     <tr class='project <%= project.location.downcase %>'>
-      <th>
+      <td>
         <%= check_box_tag "user[project_ids][]", project.id, @user.projects.include?(project) %>  
         <%= project.name %>
-      </th>
-      <th><%= project.location %></th>
+      </td>
+      <td><%= project.location %></td>
     </tr>
   <% end %>
   </table>
-  <% if Project.all.length > 0 %>
-    <%= f.submit 'Update' %>
+  <% if @projects.length > 0 %>
+    <%= f.submit 'Update', class: "btn btn-default" %>
   <% end %>  
 </p>
 <% end %>

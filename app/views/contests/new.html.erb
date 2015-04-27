@@ -2,7 +2,9 @@
 <h1>
     Add new Contest
 </h1>
-<%= form_for @contest, html: {role: "form"} do |f| %>
+<div class="row">
+<%= form_for @contest, html: {class: "col-xs-3", role: "form"} do |f| %>
     <%= render 'fields', :f => f %>
-    <%= f.submit "Create"%>
+    <%= f.submit "Create", class: "btn btn-default"%>
 <% end %>
+</div>

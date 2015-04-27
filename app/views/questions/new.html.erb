@@ -1,11 +1,11 @@
 <%= button_to 'Back', 'javascript:history.go(-1);' %>
 <h1>
-    Add new Question
+    Add New Question
 </h1>
-<div>
-<%= form_for @question, url: contest_question_type_questions_path(@question_type.contest_id, @question_type) do |f| %>
+<div class="row">
+<%= form_for(@question, url: contest_question_type_questions_path(@question_type.contest_id, @question_type),  html: {class: "col-xs-3"}) do |f| %>
     <%= render 'fields', :f => f %>
-    <%= f.submit "Create"%>
+    <%= f.submit "Create", class: "btn btn-default" %>
 <% end %>
 </div>
 

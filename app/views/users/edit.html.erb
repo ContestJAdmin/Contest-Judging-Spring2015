@@ -11,5 +11,5 @@
     <%= f.label :category%>
     <%= select("user", "category_id", options_for_select(@categories_for_dropdown, @user.category_id)) %>
     </br>
-    <%= f.submit "Update"%>
+    <%= f.submit 'Update', class: "btn btn-default" %>
 <% end %>
