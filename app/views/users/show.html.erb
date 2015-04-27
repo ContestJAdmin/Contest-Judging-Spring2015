@@ -1,9 +1,9 @@
 <%= button_to 'Back', 'javascript:history.go(-1);' %>
-<h3>Judges</h3>
+<h3>Judge</h3>
 <p>Name: <%= @user.name if @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
 
-<p>Location: </p><input id="searchbox" type="text"><button id="searchbutton">Search</button>
+<input id="searchbox" type="text"><button id="searchbutton">Search Location</button>
 
 <p>
 <%= form_for @user  do |f| %>
