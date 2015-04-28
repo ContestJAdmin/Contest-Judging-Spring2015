@@ -3,11 +3,12 @@ class UsersController < ApplicationController
 
   def index
   #  @users = User.all
-    @users= User.where('id > 1')
+    @users= User.where('id > 1 AND contest_id IS NULL')
   end
 
   def show
     @user = User.find(params[:id])
+    @projects = @user.category ? @user.category.projects : []
     unless @user == current_user || current_user.admin?
       redirect_to :back, :alert => "Access denied."
     end
@@ -15,12 +16,19 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+    @contests = Contest.all
+    @categories = Category.all
+    @categories_for_dropdown = []
+    @categories_for_dropdown = @categories_for_dropdown << ["No Category", nil, {:id => 'nil_option'}]
+    @categories.each do |category|
+      @categories_for_dropdown = @categories_for_dropdown << [category.name, category.id, {:class => category.contest_id}]
+    end
   end
   
   def update
     params[:user][:project_ids] ||= []
     @user = User.find(params[:id])
-     if @user.update_attributes(params[:user].permit!)
+    if @user.update_attributes(params[:user].permit!)
       flash[:notice] = 'updated success'
       redirect_to :action =>'index',:id =>@user
     else

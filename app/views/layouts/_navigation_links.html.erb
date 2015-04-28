@@ -1,6 +1,6 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? && current_user.try(:admin?) %>
-  <li><%= link_to 'Judges', users_path %></li>
+  <li><%= link_to 'Unassigned Judges', users_path %></li>
   <li><%= link_to 'Contests', contests_path %></li>
 <% end %>
 <% if user_signed_in? && !current_user.try(:admin?) %>

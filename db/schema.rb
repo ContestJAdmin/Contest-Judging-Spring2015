@@ -95,6 +95,8 @@ ActiveRecord::Schema.define(version: 20150428175846) do
     t.datetime "updated_at"
     t.string   "name"
     t.boolean  "admin",                  default: false
+    t.integer  "contest_id"
+    t.integer  "category_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

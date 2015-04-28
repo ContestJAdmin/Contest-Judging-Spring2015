@@ -10,4 +10,5 @@ class Contest < ActiveRecord::Base
     has_many :categories, :dependent => :destroy
     has_many :projects, :dependent => :destroy
     has_many :question_types, :dependent => :destroy
+    has_many :users
 end

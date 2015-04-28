@@ -2,15 +2,15 @@
   <div class="row">
     <%= button_to 'Back', 'javascript:history.go(-1);' %>
     <h3>Judges</h3>
-    <div class="column">
-      <table class="table">
+    <div class="row">
+      <table class="table table-striped">
         <tbody>
           <% @users.each do |user| %>
-          <% if !user.admin? %>
+            <% if !user.admin? %>
               <tr>
                 <%= render user %>
               </tr>
-          <% end %>    
+            <% end %>    
           <% end %>
         </tbody>
       </table>

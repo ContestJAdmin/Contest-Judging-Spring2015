@@ -2,11 +2,13 @@
 <h1>
     Add New Category
 </h1>
-<div>
-<%= form_for ([@contest, @category]) do |f| %>
+<div class="row">
+<%= form_for([@contest, @category], html: {class: "col-xs-3"}) do |f| %>
     <%= render 'shared/error_messages', :object => f.object%>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.submit "Create" %> 
+    <div class="form-group"> 
+        <%= f.label :name, class: "form-label" %>
+        <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <%= f.submit "Create", class: "btn btn-default" %> 
 <% end %>
 </div>
