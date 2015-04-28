@@ -56,6 +56,6 @@ class QuestionTypesController < ApplicationController
     end
     
     def question_type_params
-        params.require(:question_type).permit(:question_type)
+        params.require(:question_type).permit(:question_type, :weight)
     end
 end

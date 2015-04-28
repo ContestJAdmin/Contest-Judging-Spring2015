@@ -5,8 +5,7 @@
 
 <div>
 <%= form_for([@contest, @question_type]) do |f| %>
-    <%= f.label :question_type %>
-    <%= f.text_field :question_type %>
+    <%= render 'fields', :f => f %>
     <%= f.submit "Update" %> 
 <% end %>
 </div>
