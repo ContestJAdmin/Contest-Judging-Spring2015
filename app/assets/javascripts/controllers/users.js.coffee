@@ -7,7 +7,11 @@ filter_categories = ->
     return
   $('#nil_option').show()
   
+set_category_blank = ->
+  $('#user_category_id').val ''
+  
 $(document).ready(filter_categories)
 $(document).on('page:load', filter_categories)
 
 $('#user_contest_id').change(filter_categories)
+$('#user_contest_id').change(set_category_blank)
