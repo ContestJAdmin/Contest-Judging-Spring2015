@@ -2,13 +2,12 @@ class GradesheetsController < ApplicationController
     #@global_project_id = nil
     
     def show
-        @questions = Question.all
         @comment = 
-        @project = params[:id]
-        @location = ProjectsController.get_project_details(params[:id]).location
+        @project = Project.find(params[:id])
+        @question_types = @project.contest.question_types
         params.merge(:global_project_id => params[:id])
         #@global_project_id = @project
-        #@judge_id = 1
+        #@judge_id  = 1
     end
     
     def update

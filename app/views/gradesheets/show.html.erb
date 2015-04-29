@@ -4,43 +4,38 @@
   <h3>
     Project: 
     <label id="project">
-      <%= "#{@project}" %>
+      <%= @project.name %>
     </label>
     <br/>
     Location:
     <label id="location">
-      <%= "#{@location}" %>
+      <%= @project.location %>
     </label>
   </h3>
+  </br>
   <table id="questions" class="table table-striped">
     <thead>
-      <tr>
-        <th>Question Type</th>
-        <th>Question</th>
-        <th>Score</th>
-        <th>Weight</th>
-        <th>Comment</th>
-      </tr>
       <tbody>
-        <% @questions.each do |q| %>
+        <% @question_types.each do |question_type| %>
+          <h4><%= question_type.question_type %> - <%= question_type.weight %>%</h4>
           <tr>
-            <td>
-              <%= q.question_type ? q.question_type.question_type :  "No Question Type" %>
-            </td>
-            <td>
-              <%= q.question %>
-            </td>
-            <td>
-              <%= select q.id, :score, options_for_select(1.upto(5)) %>
-            </td>
-            <td>
-              <%= q.question_type.weight %>%
-            </td>
-            <td>
-              <%= text_area_tag :comment.to_s + q.id.to_s %>
-            </td>
-            
+            <th>Question</th>
+            <th>Score</th>
+            <th>Comment</th>
           </tr>
+          <% question_type.questions.each do |q| %>
+            <tr class="question">
+              <td>
+                <%= q.question %>
+              </td>
+              <td>
+                <%= select q.id, :score, options_for_select(1.upto(5), q.scores.find_by(:judge_id => current_user.id).score) %>
+              </td>
+              <td>
+                <%= text_area_tag :comment.to_s + q.id.to_s %>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </thead>

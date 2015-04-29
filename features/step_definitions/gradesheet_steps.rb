@@ -27,7 +27,6 @@ end
 
 Then /^I should see .* questions$/ do
   page.should have_selector('table#questions')
-  page.should have_selector('table tr')
 end
 
 Then /^I should see .* Projects list page$/ do
