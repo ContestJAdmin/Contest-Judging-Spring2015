@@ -5,7 +5,7 @@ class JudgesController < ApplicationController
        @projects = Project.all
   end
   def show
-    @judges = User.all.where(admin: false)
+    @judges = User.judges
     @judges_projects = {}
     @judges.each do |judge|
         @judges_projects[judge.id] = Project.includes(:users).where('users.id' => judge.id)

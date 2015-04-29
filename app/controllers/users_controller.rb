@@ -26,11 +26,16 @@ class UsersController < ApplicationController
   end
   
   def update
+    params[:user] ||= {}
     params[:user][:project_ids] ||= []
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user].permit!)
-      flash[:notice] = 'updated success'
-      redirect_to :action =>'index',:id =>@user
+      flash[:notice] = 'Update successful'
+      if !params[:user][:project_ids] == []
+        redirect_to user_path(@user)
+      else
+        redirect_to contest_path(params[:user][:contest_id])
+      end
     else
       render :action=>'show'
     end
