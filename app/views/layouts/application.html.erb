@@ -25,7 +25,7 @@
       </div>
     </footer>
     
-    <%= javascript_include_tag('application', "controllers/#{controller_name}", 'data-turbolinks-track' => true) if ::Rails.application.assets.find_asset("controllers/#{controller_name}.js") %>
+    <%= javascript_include_tag("controllers/#{controller_name}", 'data-turbolinks-track' => true) if ::Rails.application.assets.find_asset("controllers/#{controller_name}.js") %>
     
   </body>
 </html>
