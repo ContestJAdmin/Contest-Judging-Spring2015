@@ -159,7 +159,7 @@
               <div class="panel-heading" role="tab" id="headingFour<%= question_type.id %>">
                 <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion4" href="#collapseFour<%= question_type.id %>" aria-expanded="false" aria-controls="collapseFour<%= question_type.id %>">
                   <%= question_type.question_type %>
-                  <h6 align="right">Weight: <%= question_type.weight %></h6>
+                  <h6 align="right">Weight: <%= question_type.weight %>%</h6>
                 </a>
               </div>
               <div id="collapseFour<%= question_type.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour<%= question_type.id %>">
@@ -274,6 +274,6 @@
 <ol class="breadcrumb">
   <li role="presentation"><%= link_to 'Upload Projects File', new_contest_attachment_path(@contest) %></li>
   <li role="presentation"><%= link_to 'Add Judges to projects', controller: "users" %></li>
-  <li role="presentation"><%= link_to 'Download Scores', controller: "scores" %></li>
+  <li role="presentation"><%= link_to 'Download Scores', contest_scores_path(@contest) %></li>
   <li role="presentation"><%= link_to 'Judge Project Mapping', contest_judges_path(@contest) %></li>
 </ul>

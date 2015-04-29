@@ -1,31 +1,44 @@
 <%= button_to 'Back', 'javascript:history.go(-1);' %>
 <h1>Score Chart</h1>
 
-<table class="table table-striped">
-    <tr>
-        <th>Contest Round &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</th>
-        <th>Project Name &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</th>
-        <th>Judge Name &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</th>
-        <th>Question &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</th>
-        <th>Score &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</th>
-        <th>Comment &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</th>
-    </tr>
-    <% @scores.each do |score| %>
-    <tr>
-        <td> <%= score.round_number %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
-        <td> <%= score.project_name %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
-        <td> <%= score.user_name %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
-        <td> <%= score.question_name %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
-        <td> <%= score.score %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
-        <td> <%= score.question_comment %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
-    </tr>     
+<div class="panel-collapse">
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <% @projects_scores.each do |project_id, score| %>
+      <% project = @projects.find(project_id) %>
+      <% puts project.inspect %>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne<%= project_id %>">
+          <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<%= project_id %>" aria-expanded="false" aria-controls="collapseOne<%= project_id %>">
+            <%= project.name %>
+            <h6 align="right"> Total Score: <%= score.round(2) %></h6>
+          </a>
+        </div>
+        <div id="collapseOne<%= project_id %>" class="panel-collapse collapse <%= params[:expand_about] ? 'in' : '' %>" role="tabpanel" aria-labelledby="headingOne<%= project_id %>">
+          <div class="panel-body">
+            <table class="table table-striped">
+              <tr>
+                <th>Question Type</th>
+                <th>Question Type Weight</th>
+                <th>Averaged Score</th>
+                <th></th>
+              </tr>
+              <% @question_types.each do |question_type| %>
+              <tr>
+                <td> <%= question_type.question_type %></td>
+                <td> <%= question_type.weight %>%</td>
+                <td> <%= @projects_question_type_scores[project_id][question_type.id] %></td>
+              </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+      </div>
     <% end %>
-</table>
-<br>
+  </div>
+</div>
 
 <p>
   Download scores as: 
-  <%= link_to "CSV", scores_path(format: "csv") %> | 
-  <%= link_to "Excel", scores_path(format: "xls") %>
+  <%= link_to "CSV", contest_scores_path(@contest, format: "csv") %> | 
+  <%= link_to "Excel", contest_scores_path(@contest, format: "xls") %>
 </p>
-

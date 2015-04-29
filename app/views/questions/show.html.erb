@@ -13,7 +13,7 @@
         <td> <%= QuestionType.find(@question.question_type_id).question_type %></td>
         <td> <%= @question.maximum_score %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
         <td> <%= link_to 'Edit', edit_question_path(@question)%>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
-        <td> <%= link_to 'Destroy', contest_question_type_question_path(q, q.id, @question_type), :confirm => 'Are you sure?', :method => :delete %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
+        <td> <%= link_to 'Delete', contest_question_type_question_path(q, q.id, @question_type), :confirm => 'Are you sure?', :method => :delete %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
     </tr>     
 </table>
 

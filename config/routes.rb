@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :attachments
     resources :projects
     resources :judges
+    resources :scores
     resources :question_types do 
             resources :questions
     end
@@ -20,5 +21,4 @@ Rails.application.routes.draw do
   resources :questions
   resources :question_types
   resources :gradesheets
-  resources :scores
 end

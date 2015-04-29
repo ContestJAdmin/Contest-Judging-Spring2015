@@ -51,7 +51,6 @@ When /^I login as (.*)$/ do |role|
     #Add judge to contest and category
     click_link('Unassigned Judges')
     click_link('Assign Contest/Category')
-    save_page('please.html')
     select('Trial', :from => 'user[contest_id]')
     select('Test Category', :from => 'user[category_id]')
     click_button('Update')

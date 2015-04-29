@@ -4,7 +4,7 @@ class Question < ActiveRecord::Base
     end
     
     belongs_to :question_type
-    has_many :score
+    has_many :scores
     
     validates :question, :presence => true, :length => {:maximum => 50}
     validates :question_type_id, :presence => true
