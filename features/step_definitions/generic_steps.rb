@@ -34,15 +34,29 @@ When /^I login as (.*)$/ do |role|
     fill_in(:contest_date, :with=>'12/1/2014')
     click_button('Create')
     
+    #Add new category
+    click_link('Contests')
+    click_link('Trial')
+    click_link('New Category')
+    fill_in(:category_name, :with => 'Test Category')
+    click_button('Create')
     
     #Add projects to the contest
     click_link('New Project')
     fill_in(:project_name, :with=>'P1')
     fill_in(:project_location, :with=>'A110')
+    select('Test Category', :from => 'project[category_id]')
     click_button('Create')
     
+    #Add judge to contest and category
+    click_link('Unassigned Judges')
+    click_link('Assign Contest/Category')
+    save_page('please.html')
+    select('Trial', :from => 'user[contest_id]')
+    select('Test Category', :from => 'user[category_id]')
+    click_button('Update')
+    
     #Add judge to the project
-    click_link('Add Judges to projects')
     click_link('Judge1')
     find('#user_project_ids_').set(true)
     click_button('Update')
