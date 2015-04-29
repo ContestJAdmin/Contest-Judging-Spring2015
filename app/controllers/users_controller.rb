@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @projects = @user.category.projects;
+    @projects = @user.category ? @user.category.projects : []
     unless @user == current_user || current_user.admin?
       redirect_to :back, :alert => "Access denied."
     end

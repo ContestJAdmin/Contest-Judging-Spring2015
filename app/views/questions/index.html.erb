@@ -12,8 +12,8 @@
 <% @question_type.questions.each do |q| %>
     <tr>
         <td> <%= q.question %></td>
-        <td> <%= q.question_type.question_type %></td>
-        <td> <%= q.maximum_score %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
+        <td> <%= QuestionType.find(q.question_type_id).question_type %></td>
+        <td> <%= q.question_type.weight %>%&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
         <td> <%= link_to 'Show',contest_question_type_questions_path(q, @question_type) %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
          <%= link_to 'Edit', edit_contest_question_type_question_path(@question_type.contest_id, @question_type, q.id)%>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
          <%= link_to 'Destroy', contest_question_type_question_path(@question_type.contest_id, @question_type, q.id), :confirm => 'Are you sure?', :method => :delete %>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>

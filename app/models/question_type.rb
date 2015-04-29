@@ -1,6 +1,6 @@
 class QuestionType < ActiveRecord::Base
     def question_type_params
-        params.require(:question_type).permit(:question_type)
+        params.require(:question_type).permit(:question_type, :weight)
     end
     
     belongs_to :contest
@@ -8,6 +8,7 @@ class QuestionType < ActiveRecord::Base
     
     validates :question_type, :presence => true, :length => {:maximum => 50}
     validates :contest_id, :presence => true
+    validates :weight, :presence => true
     
 end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427154725) do
+ActiveRecord::Schema.define(version: 20150428175846) do
 
   create_table "attachments", force: true do |t|
     t.string   "filename"
@@ -62,12 +62,12 @@ ActiveRecord::Schema.define(version: 20150427154725) do
   create_table "question_types", force: true do |t|
     t.string  "question_type"
     t.integer "contest_id"
+    t.integer "weight"
   end
 
   create_table "questions", force: true do |t|
     t.integer "question_type_id"
     t.string  "question"
-    t.integer "maximum_score"
     t.string  "comment"
   end
 

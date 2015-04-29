@@ -1,6 +1,6 @@
 class Question < ActiveRecord::Base
     def question_params
-        params.require(:question).permit(:question, :question_types, :maximum_score, :question_type_id)
+        params.require(:question).permit(:question, :question_types, :question_type_id)
     end
     
     belongs_to :question_type

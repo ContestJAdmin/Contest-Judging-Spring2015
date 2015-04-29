@@ -7,7 +7,3 @@
     <%= f.label :question_types, class: "form-label" %>
     <%= f.collection_select :question_type_id, QuestionType.all, :id, :question_type, {}, class: "form-control" %>
 </div>
-<div class="form-group">
-    <%= f.label :maximum_score, class: "form-label" %>
-    <%= f.number_field :maximum_score, class: "form-control" %>
-</div>

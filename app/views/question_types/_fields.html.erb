@@ -1,5 +1,10 @@
 <%= render 'shared/error_messages', :object => f.object%>
+<<<<<<< HEAD
 <div class="form-group"> 
     <%= f.label :question_type, class: "form-label" %>
-    <%= f.text_field :question_type, class: "form-control" %>
+    <%= f.text_field :question_type, :required => true, class: "form-control" %>
 </div>
+<div class="form-group">
+    <%= f.label :weight, class: "form-label"%>
+    <%= f.number_field :weight, :required => true, class: "form-control" %>
+</div> 

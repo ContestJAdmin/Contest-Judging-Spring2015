@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
         @question = Question.find(id)
     end
     
-   def new 
+    def new 
         @question = @question_type.questions.build
     end
     
@@ -55,6 +55,6 @@ class QuestionsController < ApplicationController
     end
     
     def question_params
-        params.require(:question).permit(:question, :question_types, :maximum_score, :question_type_id)
+        params.require(:question).permit(:question, :question_types, :question_type_id)
     end
 end
