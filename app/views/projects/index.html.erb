@@ -1,16 +1,49 @@
 <div class="container">
   <div class="row">
-    <h2>Welcome Judge</h2>
+    <h2>Welcome <%= current_user.name %></h2>
     <br/>
-    <h4>Which project would you like to evaluate?</h4>
-    <table class="table">
-      <tbody>
-        <% @projects.each do |project| %>
+    <h3>Which project would you like to evaluate?</h3>
+    </br>
+    <h4>Ungraded Projects</h4>
+    <% if @ungraded_projects.size == 0 %>
+      No Ungraded Projects
+    <% else %>
+      <table class="table table-striped">
+        <tbody>
           <tr>
-            <%= render project %>
+            <th>Name</th>
+            <th>Location</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+          <% @ungraded_projects.each do |project| %>
+            <tr>
+              <%= render project %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+    </br>
+    </br>
+    <h4>Graded Projects</h4>
+    <% if @graded_projects.size == 0 %>
+      No Graded Projects
+    <% else %>    
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Total Score</th>
+          </tr>
+          <% @projects_scores.each do |project_id, score| %>
+          <% project = @graded_projects[project_id] %>
+            <tr>
+              <%= render project %>
+              <td><%= score.round(2) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
   </div>
 </div>

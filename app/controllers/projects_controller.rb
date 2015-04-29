@@ -12,7 +12,33 @@ class ProjectsController < ApplicationController
   
   public
   def index
-    @projects = current_user.projects
+    
+    contest = current_user.contest
+    projects = current_user.projects
+    question_types = contest.question_types
+    @graded_projects = {}
+    @ungraded_projects = []
+    @projects_scores = {}
+    projects.each do |project|
+      project_score = 0
+      question_type_score = 0
+      question_types.each do |question_type|
+        question_type.questions.each do |question|
+          question_type_score = question.scores.where(:project_id => project.id).average(:score).to_f
+        end
+        question_type_score ||= 0
+        project_score += (question_type_score * (question_type.weight/100.0))
+      end
+      if project_score == 0
+        @ungraded_projects.push(project)
+      else
+        @projects_scores[project.id] = project_score
+        @graded_projects[project.id] = project
+      end
+    end
+    
+    @projects_scores = @projects_scores.sort_by{|_key, value| value}.reverse.to_h
+    
   end
 
   def new
