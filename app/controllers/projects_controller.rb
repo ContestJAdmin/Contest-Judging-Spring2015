@@ -22,6 +22,7 @@ class ProjectsController < ApplicationController
   def show
     if current_user.admin? then 
       @project = Project.find(params[:id])
+      @users = @project.category ? @project.category.users : []
     end
     # unless @user == current_user || current_user.admin?
     #   redirect_to :back, :alert => "Access denied."
@@ -57,6 +58,18 @@ class ProjectsController < ApplicationController
       redirect_to :back
     else
       render 'projects/edit'
+    end
+  end
+  
+  def assign_judges
+    params[:project] ||= {}
+    params[:project][:user_ids] ||= []
+    @project = Project.find(params[:project_id])
+    if @project.update_attributes(params[:project].permit!)
+      flash[:notice] = 'Update successful'
+      redirect_to contest_project_path(@project.contest, @project)
+    else
+      render :action=>'show'
     end
   end
   

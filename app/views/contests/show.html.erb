@@ -5,13 +5,13 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
-      <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <a class="panel-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
         <h4 class="panel-title">
           About
         </h4>
       </a>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+    <div id="collapseOne" class="panel-collapse collapse <%= params[:expand_about] ? 'in' : '' %>" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
         <table class="table table-striped">
             <tr>
@@ -43,7 +43,7 @@
         </h4>
       </a>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+    <div id="collapseTwo" class="panel-collapse collapse <%= params[:expand_project_categories] ? 'in' : '' %>" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
         <h3>Project Categories</h3>
         <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
@@ -110,7 +110,7 @@
                     <% @categories_projects[category.id].each do |project| %>
                       <tr>
                         <th>
-                          <%= project.name %>
+                          <%= link_to project.name, contest_project_path(@contest, project)%>
                         </th>
                         <th>
                           <%= project.category ? project.category.name :  "No category"%>
@@ -150,7 +150,7 @@
         </h4>
       </a>
     </div>
-    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+    <div id="collapseFour" class="panel-collapse collapse <%= params[:expand_question_types] ? 'in' : '' %>" role="tabpanel" aria-labelledby="headingFour">
       <div class="panel-body">
         <h3>Question Types</h3>
         <div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
@@ -202,7 +202,7 @@
         </h4>
       </a>
     </div>
-    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+    <div id="collapseFive" class="panel-collapse collapse <%= params[:expand_judges] ? 'in' : '' %>" role="tabpanel" aria-labelledby="headingFive">
       <div class="panel-body">
         <h3>Project Categories</h3>
         <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">

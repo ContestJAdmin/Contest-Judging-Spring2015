@@ -6,5 +6,9 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :projects
   belongs_to :contest
   belongs_to :category
- # has_and_belongs_to_many :projects, :join_table => "projects_users", :foreign_key => "project_id"
+  # has_and_belongs_to_many :projects, :join_table => "projects_users", :foreign_key => "project_id"
+  def self.judges
+    return self.where(admin: false)
+  end
+ 
 end

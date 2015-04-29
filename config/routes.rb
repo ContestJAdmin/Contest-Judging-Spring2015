@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   resources :contests do
     resources :categories
     resources :attachments
-    resources :projects do 
-    end
+    resources :projects
     resources :question_types do 
             resources :questions
     end
@@ -14,7 +13,9 @@ Rails.application.routes.draw do
   root to: 'visitors#index'
   devise_for :users
   resources :users
-  resources :projects
+  resources :projects do 
+    patch 'assign_judges'
+  end
   resources :judges
   resources :questions
   resources :question_types
