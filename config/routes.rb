@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :attachments
     resources :projects
+    resources :judges
     resources :question_types do 
             resources :questions
     end
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
   resources :projects do 
     patch 'assign_judges'
   end
-  resources :judges
   resources :questions
   resources :question_types
   resources :gradesheets

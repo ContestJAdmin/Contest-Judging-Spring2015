@@ -275,5 +275,5 @@
   <li role="presentation"><%= link_to 'Upload Projects File', new_contest_attachment_path(@contest) %></li>
   <li role="presentation"><%= link_to 'Add Judges to projects', controller: "users" %></li>
   <li role="presentation"><%= link_to 'Download Scores', controller: "scores" %></li>
-  <li role="presentation"><%= link_to 'Judge Project Mapping', action:'show' , controller:'judges' %></li>
+  <li role="presentation"><%= link_to 'Judge Project Mapping', contest_judges_path(@contest) %></li>
 </ul>
