@@ -8,6 +8,11 @@ class ScoresController < ApplicationController
     @projects_scores = {}
     @projects_question_type_scores = {}
     
+    # Score per Judge per Project
+    # Judge Score is questions averaged for each question type, multiplied by weight, and totaled
+    # Final Score is Averaged Judge Scores for a Project
+    # Don't display question types, display Judges with Scores for project
+    
     @projects.each do |project|
       project_score = 0
       question_type_score = {}
