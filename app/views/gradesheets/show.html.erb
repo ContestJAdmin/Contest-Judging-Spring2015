@@ -24,12 +24,14 @@
             <th>Comment</th>
           </tr>
           <% question_type.questions.each do |q| %>
+          <% judge_score = q.scores.find_by(:judge_id => current_user.id) %>
             <tr class="question">
               <td>
                 <%= q.question %>
               </td>
               <td>
-                <%= select q.id, :score, options_for_select(1.upto(5), q.scores.find_by(:judge_id => current_user.id).score) %>
+                
+                <%= select q.id, :score, options_for_select(1.upto(5), judge_score ? judge_score.score : nil) %>
               </td>
               <td>
                 <%= text_area_tag :comment.to_s + q.id.to_s %>
