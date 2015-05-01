@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
   #  @users = User.all
-    @users= User.where('id > 1 AND contest_id IS NULL')
+    @users= User.judges
   end
 
   def show

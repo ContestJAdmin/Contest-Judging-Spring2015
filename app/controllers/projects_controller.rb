@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
       question_type_score = 0
       question_types.each do |question_type|
         question_type.questions.each do |question|
-          question_type_score = question.scores.where(:project_id => project.id).average(:score).to_f
+          question_type_score = question.scores.where(:project_id => project.id, :judge_id => current_user.id).average(:score).to_f
         end
         question_type_score ||= 0
         project_score += (question_type_score * (question_type.weight/100.0))
