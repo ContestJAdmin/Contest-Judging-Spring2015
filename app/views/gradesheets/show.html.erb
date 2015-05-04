@@ -34,7 +34,7 @@
                 <%# select q.id, :score, options_for_select(1.upto(5), q.scores.find_by(:judge_id => current_user.id).score) %>
                 <%= radio_button q.id, :score, "1", :checked => (judge_score_num == 1) %><label>1</label>
                 <%= radio_button q.id, :score, "2", :checked => (judge_score_num == 2) %><label>2</label>
-                <%= radio_button q.id, :score, "3", :checked => (judge_score_num == 3 || ) %><label>3</label>
+                <%= radio_button q.id, :score, "3", :checked => (judge_score_num == 3 || judge_score_num == 0) %><label>3</label>
                 <%= radio_button q.id, :score, "4", :checked => (judge_score_num == 4) %><label>4</label>
                 <%= radio_button q.id, :score, "5", :checked => (judge_score_num == 5) %><label>5</label>
               </td>
