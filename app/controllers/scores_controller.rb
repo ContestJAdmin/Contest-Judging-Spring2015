@@ -36,7 +36,7 @@ class ScoresController < ApplicationController
         project_score += judge_score
         num_of_judges_graded += 1 unless judge_score == 0
       end
-      @projects_scores[project.id] = project_score/(num_of_judges == 0 ? 1 : num_of_judges)
+      @projects_scores[project.id] = project_score/(num_of_judges_graded == 0 ? 1 : num_of_judges_graded)
     end
     
     @projects_scores = @projects_scores.sort_by{|_key, value| value}.reverse.to_h
