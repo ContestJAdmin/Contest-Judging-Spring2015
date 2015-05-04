@@ -6,7 +6,7 @@ class Score < ActiveRecord::Base
     s = Score.new
     s.round_number = round_number
     s.project_id = project_id
-    s.judge_id = judge_id
+    s.user_id = judge_id
     s.question_id = question_id
     s.score = score
     s.comment = comment
@@ -14,18 +14,18 @@ class Score < ActiveRecord::Base
   end
    
   def self.update_record(round_number, project_id, judge_id, question_id, score, comment)
-    user = Score.find_by(round_number: round_number, project_id: project_id, judge_id: judge_id, question_id: question_id)
+    user = Score.find_by(round_number: round_number, project_id: project_id, user_id: judge_id, question_id: question_id)
     user.score = score
     user.comment = comment
     user.save!
   end
 
-  def Score.to_csv(scores=[], options = {})
+  def Score.to_csv(projects_scores=[], projects=[], options={})
     CSV.generate(options) do |csv|
-      csv << ['Round Number','Project Name','Username','Question','Score','Comments']
-      scores.each do |score|
-        csv << [score.round_number,score.project_name,score.user_name,score.question_name,score.score,score.question_comment]
-        #score.attributes.values_at(*scores.column_names)
+      csv << ['Project Name','Project Category','Score']
+      projects_scores.each do |project_id, score|
+        project = projects.find(project_id)
+        csv << [project.name, project.category.name, score]
       end
     end
   end

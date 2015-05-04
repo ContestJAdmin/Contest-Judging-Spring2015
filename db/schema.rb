@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428175846) do
+ActiveRecord::Schema.define(version: 20150503223018) do
 
   create_table "attachments", force: true do |t|
     t.string   "filename"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150428175846) do
   create_table "comments", force: true do |t|
     t.integer "round_number"
     t.integer "project_id"
-    t.integer "judge_id"
+    t.integer "user_id"
     t.string  "comment"
   end
 
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20150428175846) do
     t.integer "round_number"
     t.integer "project_id"
     t.integer "question_id"
-    t.integer "judge_id"
+    t.integer "user_id"
     t.integer "score"
     t.string  "comment"
   end

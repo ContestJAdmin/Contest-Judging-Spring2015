@@ -26,11 +26,11 @@ When /^I click .* submit button$/ do
 end
 
 Then /^I should see .* questions$/ do
-  page.should have_selector('table#questions')
+  page.should have_selector('.questions')
 end
 
 Then /^I should see .* Projects list page$/ do
-  page.should have_selector('table')
+  page.should have_selector('table.projects')
   page.should have_content('Which project would you like to evaluate?')
 end
 

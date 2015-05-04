@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
   #  @users = User.all
-    @users= User.judges
+    @users= User.judges.where(:contest_id => nil)
   end
 
   def show
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       if !(params[:user][:project_ids] == [])
         redirect_to user_path(@user)
       else
-        redirect_to contest_path(params[:user][:contest_id])
+        redirect_to contest_path(params[:user][:contest_id], :expand_judges => true)
       end
     else
       render :action=>'show'

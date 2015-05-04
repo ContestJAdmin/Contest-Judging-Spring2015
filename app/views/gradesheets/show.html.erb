@@ -13,35 +13,38 @@
     </label>
   </h3>
   </br>
-  <table id="questions" class="table table-striped">
-    <thead>
-      <tbody>
+  
+  
         <% @question_types.each do |question_type| %>
-          <h4><%= question_type.question_type %> - <%= question_type.weight %>%</h4>
-          <tr>
-            <th>Question</th>
-            <th>Score</th>
-            <th>Comment</th>
-          </tr>
-          <% question_type.questions.each do |q| %>
-          <% judge_score = q.scores.find_by(:judge_id => current_user.id) %>
-            <tr class="question">
-              <td>
-                <%= q.question %>
-              </td>
-              <td>
-                
-                <%= select q.id, :score, options_for_select(1.upto(5), judge_score ? judge_score.score : nil) %>
-              </td>
-              <td>
-                <%= text_area_tag :comment.to_s + q.id.to_s %>
-              </td>
-            </tr>
-          <% end %>
+        <h4><%= question_type.question_type %> - <%= question_type.weight %>%</h4>
+          <table id="question_type_<%= question_type.question_type %>" class="table table-striped questions">
+            <thead>
+              <tbody>
+                <tr>
+                  <th>Question</th>
+                  <th>Score</th>
+                  <th>Comment</th>
+                </tr>
+                <% question_type.questions.each do |q| %>
+                  <% judge_score = q.scores.find_by(:user_id => current_user.id) %>
+                  <tr class="question">
+                    <td>
+                      <%= q.question %>
+                    </td>
+                    <td>
+                      
+                      <%= select q.id, :score, options_for_select(1.upto(5), judge_score ? judge_score.score : nil) %>
+                    </td>
+                    <td>
+                      <%= text_area_tag :comment.to_s + q.id.to_s %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </thead>
+          </table>
         <% end %>
-      </tbody>
-    </thead>
-  </table>
+      
   <br/>
   <button id="submit">Submit Scores</button>
 <% end %>
