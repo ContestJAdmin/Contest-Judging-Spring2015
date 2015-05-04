@@ -13,12 +13,13 @@ class ProjectsController < ApplicationController
   public
   def index
     
-    contest = current_user.contest
-    projects = current_user.projects
-    question_types = contest.question_types
     @graded_projects = {}
     @ungraded_projects = []
     @projects_scores = {}
+    
+    contest = current_user.contest
+    projects = current_user.projects
+    question_types = contest ? contest.question_types : []
     projects.each do |project|
       project_score = 0
       question_type_score = 0
