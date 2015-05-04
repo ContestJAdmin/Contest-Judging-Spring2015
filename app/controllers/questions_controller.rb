@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
         @question = @question_type.questions.build(question_params)
         if @question.save
             flash[:success] = "Successful"
-            redirect_to contest_question_type_path(@question_type.contest_id, @question_type)
+            redirect_to contest_path(params[:contest_id], :expand_question_types => true)
         else
             render 'new'
         end
@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
         @question = @question_type.questions.find(params[:id])
         if @question.update_attributes(question_params)
             flash[:success] = "Question Updated"
-            redirect_to contest_question_type_path(@question_type.contest_id, @question_type)
+            redirect_to contest_path(params[:contest_id], :expand_question_types => true)
         else
             render 'edit'
         end

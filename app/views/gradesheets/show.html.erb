@@ -16,25 +16,27 @@
   <table id="questions" class="table table-striped">
     <thead>
       <tbody>
+  
         <% @question_types.each do |question_type| %>
-          <h4><%= question_type.question_type %> - <%= question_type.weight %>%</h4>
           <tr>
-            <th>Question</th>
+            <th><%= question_type.question_type %> - <%= question_type.weight %>%</th>
             <th>Score</th>
             <th>Comment</th>
           </tr>
           <% question_type.questions.each do |q| %>
+            <% judge_score = q.scores.find_by(:user_id => current_user.id) %>
+            <% judge_score_num = judge_score ? judge_score.score : 0 %>
             <tr class="question">
               <td>
                 <%= q.question %>
               </td>
               <td>
                 <%# select q.id, :score, options_for_select(1.upto(5), q.scores.find_by(:judge_id => current_user.id).score) %>
-                <%= radio_button q.id, :score, "1", :checked => (q.scores.find_by(:user_id => current_user.id).score == 1) %><label>1</label>
-                <%= radio_button q.id, :score, "2", :checked => (q.scores.find_by(:user_id => current_user.id).score == 2) %><label>2</label>
-                <%= radio_button q.id, :score, "3", :checked => (q.scores.find_by(:user_id => current_user.id).score == 3) %><label>3</label>
-                <%= radio_button q.id, :score, "4", :checked => (q.scores.find_by(:user_id => current_user.id).score == 4) %><label>4</label>
-                <%= radio_button q.id, :score, "5", :checked => (q.scores.find_by(:user_id => current_user.id).score == 5) %><label>5</label>
+                <%= radio_button q.id, :score, "1", :checked => (judge_score_num == 1), :required => true %><label>1</label>
+                <%= radio_button q.id, :score, "2", :checked => (judge_score_num == 2) %><label>2</label>
+                <%= radio_button q.id, :score, "3", :checked => (judge_score_num == 3) %><label>3</label>
+                <%= radio_button q.id, :score, "4", :checked => (judge_score_num == 4) %><label>4</label>
+                <%= radio_button q.id, :score, "5", :checked => (judge_score_num == 5) %><label>5</label>
               </td>
               <td>
                 <%= text_area_tag :comment.to_s + q.id.to_s %>
@@ -45,6 +47,8 @@
       </tbody>
     </thead>
   </table>
+
+      
   <br/>
   <button id="submit">Submit Scores</button>
 <% end %>

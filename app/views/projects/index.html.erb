@@ -8,7 +8,7 @@
     <% if @ungraded_projects.size == 0 %>
       No Ungraded Projects
     <% else %>
-      <table class="table table-striped">
+      <table class="table table-striped projects">
         <tbody>
           <tr>
             <th>Name</th>
@@ -23,12 +23,11 @@
       </table>
     <% end %>
     </br>
-    </br>
     <h4>Graded Projects</h4>
     <% if @graded_projects.size == 0 %>
       No Graded Projects
     <% else %>    
-      <table class="table table-striped">
+      <table class="table table-striped projects">
         <tbody>
           <tr>
             <th>Name</th>

@@ -48,6 +48,17 @@ When /^I login as (.*)$/ do |role|
     select('Test Category', :from => 'project[category_id]')
     click_button('Create')
     
+    #Add question type
+    click_link('New Question Type')
+    fill_in(:question_type_question_type, :with=>'Presentation')
+    fill_in(:question_type_weight, :with=>'50')
+    click_button('Create')
+    
+    #Add new question
+    click_link('New Question')
+    fill_in(:question_question, :with=>'Is it good?')
+    click_button('Create')
+    
     #Add judge to contest and category
     click_link('Unassigned Judges')
     click_link('Assign Contest/Category')

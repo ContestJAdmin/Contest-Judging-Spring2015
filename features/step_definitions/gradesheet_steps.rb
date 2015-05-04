@@ -22,6 +22,7 @@ When /^I click a project .*$/ do
 end
 
 When /^I click .* submit button$/ do 
+  choose('1_score_5')
   click_button('Submit Scores')
 end
 
@@ -30,7 +31,7 @@ Then /^I should see .* questions$/ do
 end
 
 Then /^I should see .* Projects list page$/ do
-  page.should have_selector('table')
+  page.should have_selector('table.projects')
   page.should have_content('Which project would you like to evaluate?')
 end
 
