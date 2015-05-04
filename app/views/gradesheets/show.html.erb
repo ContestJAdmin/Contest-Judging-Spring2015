@@ -24,7 +24,7 @@
             <th>Comment</th>
           </tr>
           <% question_type.questions.each do |q| %>
-            <% judge_score = q.scores.find_by(:user_id => current_user.id) %>
+            <% judge_score = q.scores.find_by(:user_id => current_user.id, :project_id => @project.id) %>
             <% judge_score_num = judge_score ? judge_score.score : 0 %>
             <tr class="question">
               <td>
