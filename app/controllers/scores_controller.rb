@@ -18,8 +18,10 @@ class ScoresController < ApplicationController
     @projects.each do |project|
       project_score = 0
       judges = project.users.judges
+      num_of_judges_graded = 0
       judges.each do |judge|
         judge_score = 0
+        
         @question_types.each do |question_type|
           question_type_score = 0
           question_type.questions.each do |question|
@@ -32,8 +34,9 @@ class ScoresController < ApplicationController
         end
         @judges_scores[judge.id][project.id] = judge_score
         project_score += judge_score
+        num_of_judges_graded += 1 unless judge_score == 0
       end
-      @projects_scores[project.id] = project_score/(judges.size == 0 ? 1 : judges.size)
+      @projects_scores[project.id] = project_score/(num_of_judges == 0 ? 1 : num_of_judges)
     end
     
     @projects_scores = @projects_scores.sort_by{|_key, value| value}.reverse.to_h
