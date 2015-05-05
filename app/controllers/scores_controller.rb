@@ -1,5 +1,7 @@
 class ScoresController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :authenticate_admin
+  
   def index
     # @scores = Scores.order(:project_id)
     @contest = Contest.find(params[:contest_id])

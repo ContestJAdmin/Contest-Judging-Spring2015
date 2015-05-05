@@ -21,7 +21,6 @@
           <tr>
             <th><%= question_type.question_type %> - <%= question_type.weight %>%</th>
             <th>Score</th>
-            <th>Comment</th>
           </tr>
           <% question_type.questions.each do |q| %>
             <% judge_score = q.scores.find_by(:user_id => current_user.id, :project_id => @project.id) %>
@@ -37,9 +36,6 @@
                 <%= radio_button q.id, :score, "3", :checked => (judge_score_num == 3 || judge_score_num == 0) %><label>3</label>
                 <%= radio_button q.id, :score, "4", :checked => (judge_score_num == 4) %><label>4</label>
                 <%= radio_button q.id, :score, "5", :checked => (judge_score_num == 5) %><label>5</label>
-              </td>
-              <td>
-                <%= text_area_tag :comment.to_s + q.id.to_s %>
               </td>
             </tr>
           <% end %>

@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :authenticate_admin, :only => [:new, :create, :destroy, :unassigned, :assign_judges, :edit, :update]
   before_filter :has_contest, :only => [:new, :create, :destroy, :unassigned]
 
   protected

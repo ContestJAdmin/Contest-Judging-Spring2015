@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :authenticate_admin, :only => [:index, :edit, :update, :destroy]
 
   def index
   #  @users = User.all
@@ -10,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @projects = @user.category ? @user.category.projects : []
     unless @user == current_user || current_user.admin?
-      redirect_to :back, :alert => "Access denied."
+      redirect_to root_path, :alert => "Access denied."
     end
   end
   
