@@ -19,6 +19,7 @@ class GradesheetsController < ApplicationController
       questions.each do |q|
         #Round number, Project_id, Judge_id, question, score
         puts q.id
+        params["comment"+q.id.to_s] ||= ''
         if Score.exists?(:project_id => params[:id], :user_id => current_user.id, :question_id => q.id)
             Score.update_record(1, params[:id], current_user.id, q.id, params[q.id.to_s]['score'], params["comment"+q.id.to_s].strip)
         else 

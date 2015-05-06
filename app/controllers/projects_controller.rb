@@ -75,6 +75,7 @@ class ProjectsController < ApplicationController
   end
   
   def edit
+    @contest = Contest.find(params[:contest_id])
     @project = Project.find(params[:id])
   end
   
@@ -84,7 +85,7 @@ class ProjectsController < ApplicationController
       flash[:success] = "Project Updated"
       redirect_to :back
     else
-      render 'projects/edit'
+      render 'edit'
     end
   end
   

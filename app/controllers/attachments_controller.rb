@@ -22,16 +22,54 @@ class AttachmentsController < ApplicationController
       return
     end
     
-    puts params.inspect
-    @attachment = Attachment.new
-    @attachment.uploaded_file(@contest, params)
-
-    if @attachment.save
-        flash[:success] = "File upload successful"
-        redirect_to contest_path(@contest)
+    if upload_file_and_process(@contest, params)
+      flash[:success] = "File upload successful"
+      redirect_to contest_path(@contest)
     else
-        flash[:error] = "There was a problem submitting your attachment."
-        render contest_path(@contest)
+      redirect_to new_contest_attachment_path(@contest)
+    end
+  end
+  
+  def upload_file_and_process(contest, params)
+    puts contest.inspect
+    incoming_file = params[:attachment][:attachment]
+    name =  'test.csv'
+    directory = "public/"
+    path = File.join(directory, name)
+    
+    File.open(path, "wb") { |f| f.write(incoming_file.read) }
+    
+    projects = CSV.open(path, {:headers => true, :encoding => 'ISO-8859-1'})
+    projects.each do |row|
+      puts row.inspect
+      parameters = {"name" => row[0], "location" => row[1]}
+      category_name = row[2]
+      if !contest.categories.exists?("name"=> category_name)
+        if !create_category(contest, category_name)
+          return false
+        end
+      end
+      parameters["category_id"] = contest.categories.find_by_name(category_name).id
+      project = contest.projects.build(parameters)
+      if(!project.location_unique?)
+        flash[:error] = "Duplicate location assignment detected."
+        return false
+      end
+      if (!project.save)
+        flash[:error] = "Something went wrong, please check your project file."
+        return false
+      end
+      puts @project.inspect
+    end
+    return true
+  end
+    
+  def create_category(contest, category_name)
+    parameters = {"name" => category_name}
+    category = contest.categories.build(parameters)
+    if (!category.save)
+      flash[:error] = "Something went wrong, please check your project file."
+      return false
     end
   end
   
