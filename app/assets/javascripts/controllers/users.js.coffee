@@ -19,14 +19,24 @@ $('#searchbox').keyup (event) ->
   return
 
 
-filter_categories = ->
+jQuery.fn.toggleOption = (show) ->
+  $(this).toggle show
+  if show
+    if $(this).parent('span.toggleOption').length
+      $(this).unwrap()
+  else
+    if $(this).parent('span.toggleOption').length == 0
+      $(this).wrap '<span class="toggleOption" style="display: none;" />'
+  return
+
+$('#user_contest_id').on 'change', ->
+  val = $(this).val()
   $('#user_category_id option').each ->
-    if !$(this).hasClass($('#user_contest_id').val())
-      $(this).hide()
-    else
-      $(this).show()
+    $option = $(this)
+    $option.toggleOption $option.hasClass(val)
     return
-  $('#nil_option').show()
+  $('#nil_option').toggleOption(true)
+  return
   
 set_category_blank = ->
   $('#user_category_id').val ''
