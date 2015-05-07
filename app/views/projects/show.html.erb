@@ -14,20 +14,22 @@
   <% if @users.length < 1 %>
    There are currently no judges to assign. 
   <% end %>
-  <table class="table table-striped">
-    <tr>
+  <table id="judges" class="table table-striped">
+    <tr class="header-row">
       <th>Judge Name</th>
       <th>Judge Email</th>
     </tr>
-  <% for user in @users %> 
-    <tr>
-      <td>
-        <%= check_box_tag "project[user_ids][]", user.id, @project.users.include?(user) %>  
-        <%= user.name %>
-      </td>
-      <td><%= user.email %></td>
-    </tr>
-  <% end %>
+  <tbody class="data-rows">
+    <% for user in @users %> 
+      <tr>
+        <td>
+          <%= check_box_tag "project[user_ids][]", user.id, @project.users.include?(user) %>  
+          <%= user.name %>
+        </td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
   </table>
   <% if @users.length > 0 %>
     <%= f.submit 'Update', class: "btn btn-default" %>
