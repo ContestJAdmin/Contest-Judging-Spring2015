@@ -64,14 +64,15 @@ sortTable = (tableId, col) ->
   return
 
 $('tr.header-row th').click ->
+  tableId = '#' + $(this).closest('table').attr('id')
   if $(this).hasClass('sorted')
-    reverseTable '#projects'
+    reverseTable tableId
     $(this).find('span.order').toggleClass("dropdown dropup");
   else
     $('tr.header-row th.sorted').find('span').remove()
     $('tr.header-row th.sorted').removeClass 'sorted'
     col = $(this).parent().children().index($(this))
     $(this).addClass 'sorted'
-    sortTable '#projects', col
+    sortTable tableId, col
     $(this).append '<span class=\'order dropup\'><span class=\'caret\'></span></span>'
     return

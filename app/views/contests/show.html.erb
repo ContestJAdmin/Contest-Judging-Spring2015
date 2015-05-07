@@ -56,8 +56,8 @@
             </div>
             <div id="collapseTwoNoCategory" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwoNoCategory">
               <div class="panel-body">
-                <table class="table table-striped">
-                  <tr>
+                <table id="projects-for-nil" class="table table-striped">
+                  <tr class="header-row">
                       <th>Name</th>
                       <th>Category</th>
                       <th>Location</th>
@@ -66,23 +66,25 @@
                   <% if @contest.projects.where("category_id IS NULL").count == 0 %>
                     <tr><th>No projects in this category</th><th></th><th></th><th></th></tr>
                   <% end %>
+                  <tbody class="data-rows">
                   <% @contest.projects.where("category_id IS NULL").each do |project| %>
                     <tr>
-                      <th>
+                      <td>
                         <%= project.name %>
-                      </th>
-                      <th>
+                      </td>
+                      <td>
                         <%= project.category ? project.category.name :  "No category"%>
-                      </th>
-                      <th>
+                      </td>
+                      <td>
                         <%= project.location %>
-                      </th>
-                      <th>
+                      </td>
+                      <td>
                         <%= link_to 'Edit', edit_contest_project_path(@contest, project)%>
                         <%= link_to 'Delete', [@contest, project], :method => :delete, data: {confirm: "Are you sure?"} %>
-                      </th>
+                      </td>
                     </tr>
                   <% end %>
+                  </tbody>
                 </table>
               </div>
             </div>
@@ -97,8 +99,8 @@
               </div>
               <div id="collapseTwo<%= category.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo<%= category.id %>">
                 <div class="panel-body">
-                  <table class="table table-striped">
-                    <tr>
+                  <table id="projects-for-<%= category.id %>" class="table table-striped">
+                    <tr class="header-row">
                         <th>Name</th>
                         <th>Category</th>
                         <th>Location</th>
@@ -107,23 +109,25 @@
                     <% if @categories_projects[category.id].size == 0 %>
                       <tr><th>No projects in this category</th><th></th><th></th><th></th></tr>
                     <% end %>
+                    <tbody class="data-rows">
                     <% @categories_projects[category.id].each do |project| %>
                       <tr>
-                        <th>
+                        <td>
                           <%= link_to project.name, contest_project_path(@contest, project)%>
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                           <%= project.category ? project.category.name :  "No category"%>
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                           <%= project.location %>
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                           <%= link_to 'Edit', edit_contest_project_path(@contest, project)%>
                           <%= link_to 'Delete', [@contest, project], :method => :delete, data: {confirm: "Are you sure?"} %>
-                        </th>
+                        </td>
                       </tr>
                     <% end %>
+                    </tbody>
                   </table>
                   <ul class="breadcrumb">
                     <li role="presentation"><%= link_to 'Edit Category Name', edit_contest_category_path(@contest, category)%></li>
@@ -164,11 +168,12 @@
               </div>
               <div id="collapseFour<%= question_type.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour<%= question_type.id %>">
                 <div class="panel-body">
-                  <table class="table table-striped">
-                    <tr>
+                  <table id="questions-for-<%= question_type.id %>" class="table table-striped">
+                    <tr class="header-row">
                       <th>Question</th>
                       <th>Actions</th>
                     </tr>
+                    <tbody class="data-rows">
                     <% question_type.questions.each do |question| %>
                       <tr>
                         <td><%= question.question %></td>
@@ -178,6 +183,7 @@
                         </td>
                       </tr>
                     <% end %>
+                    </tbody>
                     <tr>
                       <td><%= link_to 'New Question', new_contest_question_type_question_path(@contest, question_type) %></td>
                       <td></td>
@@ -215,12 +221,13 @@
             </div>
             <div id="collapseFiveNoCategory" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFiveNoCategory">
               <div class="panel-body">
-                <table class="table table-striped">
-                  <tr>
+                <table id="unassigned-judges-for-nil" class="table table-striped">
+                  <tr class="header-row">
                     <th>Name</th>
                     <th>Email</th>
                     <th>Actions</th>
                   </tr>
+                  <tbody class="data-rows">
                   <% @contest.users.where('category_id IS NULL').each do |judge| %>
                     <tr>
                       <td><%= link_to judge.name, judge %></td>
@@ -231,6 +238,7 @@
                       </td>
                     </tr>
                   <% end %>
+                  </tbody>
                 </table>
               </div>
             </div>
@@ -245,12 +253,13 @@
               </div>
               <div id="collapseFive<%= category.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive<%= category.id %>">
                 <div class="panel-body">
-                  <table class="table table-striped">
-                    <tr>
+                  <table id="assigned-judges-for-<%= category.id %>" class="table table-striped">
+                    <tr class="header-row">
                       <th>Name</th>
                       <th>Email</th>
                       <th>Action</th>
                     </tr>
+                    <tbody class="data-rows">
                     <% category.users.each do |judge| %>
                       <tr>
                         <td><%= link_to judge.name, judge %></td>
@@ -261,6 +270,7 @@
                         </td>
                       </tr>
                     <% end %>
+                    </tbody>
                   </table>
                 </div>
               </div>

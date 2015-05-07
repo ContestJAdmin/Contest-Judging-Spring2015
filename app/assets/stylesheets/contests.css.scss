@@ -1,0 +1,12 @@
+// Place all the styles related to the judges controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.header-row th {
+    cursor: pointer;
+}
+
+.header-row th:hover {
+    text-decoration: underline;
+    background-color: white;
+}

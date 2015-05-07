@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-# project judge assignment table sorting
+# judge project assignment table sorting
 reverseTable = (tableId) ->
   rows = $(tableId + ' tbody.data-rows  tr').get().reverse()
   $.each rows, (index, row) ->
@@ -31,10 +31,11 @@ $('tr.header-row th').click ->
     reverseTable tableId
     $(this).find('span.order').toggleClass("dropdown dropup");
   else
-    $('tr.header-row th.sorted').find('span').remove()
-    $('tr.header-row th.sorted').removeClass 'sorted'
+    $(tableId+' tr.header-row th.sorted').find('span').remove()
+    $(tableId+' tr.header-row th.sorted').removeClass 'sorted'
     col = $(this).parent().children().index($(this))
     $(this).addClass 'sorted'
     sortTable tableId, col
     $(this).append '<span class=\'order dropup\'><span class=\'caret\'></span></span>'
     return
+
