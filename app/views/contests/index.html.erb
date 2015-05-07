@@ -16,7 +16,7 @@
         <td> <%= contest.date.strftime("%B %e, %Y %l:%M %p") %></td>
         <td>
             <%= link_to 'Edit', edit_contest_path(contest)%>
-            <% if contest.date < Date.today #only past contests can be deleted %>
+            <% if contest.date < DateTime.now.ago(1.day) #only past contests can be deleted %>
             <%= link_to 'Delete', contest, :method => :delete, data: {confirm: "Are you sure?"} %>
             <% else %>
             Delete
