@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+
+# judge project assignment search
 $('#searchbutton').click ->
   $('.project').each ->
     if !$('#searchbox').val()
@@ -18,7 +20,7 @@ $('#searchbox').keyup (event) ->
     $('#searchbutton').click()
   return
 
-
+# judge category assignment filter
 filter_categories = ->
   $('#user_category_id option').each ->
     if !$(this).hasClass($('#user_contest_id').val())
@@ -36,3 +38,40 @@ $(document).on('page:load', filter_categories)
 
 $('#user_contest_id').change(filter_categories)
 $('#user_contest_id').change(set_category_blank)
+
+
+# judge project assignment table sorting
+reverseTable = (tableId) ->
+  rows = $(tableId + ' tbody.data-rows  tr').get().reverse()
+  $.each rows, (index, row) ->
+    $(tableId).children('tbody.data-rows').append row
+    return
+  return
+
+sortTable = (tableId, col) ->
+  rows = $(tableId + ' tbody.data-rows  tr').get()
+  rows.sort (a, b) ->
+    A = $(a).children('td').eq(col).text().toUpperCase()
+    B = $(b).children('td').eq(col).text().toUpperCase()
+    if A < B
+      return -1
+    if A > B
+      return 1
+    0
+  $.each rows, (index, row) ->
+    $(tableId).children('tbody.data-rows').append row
+    return
+  return
+
+$('tr.header-row th').click ->
+  if $(this).hasClass('sorted')
+    reverseTable '#projects'
+    $(this).find('span.order').toggleClass("dropdown dropup");
+  else
+    $('tr.header-row th.sorted').find('span').remove()
+    $('tr.header-row th.sorted').removeClass 'sorted'
+    col = $(this).parent().children().index($(this))
+    $(this).addClass 'sorted'
+    sortTable '#projects', col
+    $(this).append '<span class=\'order dropup\'><span class=\'caret\'></span></span>'
+    return

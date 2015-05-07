@@ -12,20 +12,22 @@
   <% if @projects.length < 1 %>
    There are currently no projects to assign. 
   <% end %>
-  <table class="table table-striped">
-    <tr>
+  <table id="projects" class="table table-striped">
+    <tr class="header-row">
       <th>Project Name</th>
       <th>Project Location</th>
     </tr>
-  <% for project in @projects %> 
-    <tr class='project <%= project.location.downcase %>'>
-      <td>
-        <%= check_box_tag "user[project_ids][]", project.id, @user.projects.include?(project) %>  
-        <%= project.name %>
-      </td>
-      <td><%= project.location %></td>
-    </tr>
-  <% end %>
+    <tbody class="data-rows">
+      <% for project in @projects %>
+          <tr class='project <%= project.location.downcase %>'>
+            <td>
+              <%= check_box_tag "user[project_ids][]", project.id, @user.projects.include?(project) %>  
+              <%= project.name %>
+            </td>
+            <td><%= project.location %></td>
+          </tr>
+      <% end %>
+    </tbody>
   </table>
   <% if @projects.length > 0 %>
     <%= f.submit 'Update', class: "btn btn-default" %>
