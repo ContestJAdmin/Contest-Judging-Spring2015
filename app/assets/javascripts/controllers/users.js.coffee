@@ -31,8 +31,8 @@ jQuery.fn.toggleOption = (show) ->
       $(this).wrap '<span class="toggleOption" style="display: none;" />'
   return
 
-$('#user_contest_id').on 'change', ->
-  val = $(this).val()
+filter_categories = -> 
+  val = $('#user_contest_id').val()
   $('#user_category_id option').each ->
     $option = $(this)
     $option.toggleOption $option.hasClass(val)
@@ -43,6 +43,10 @@ $('#user_contest_id').on 'change', ->
 set_category_blank = ->
   $('#user_category_id').val ''
   
+$(document).ready(filter_categories)
+$(document).on('page:load', filter_categories)
+
+$('#user_contest_id').change(filter_categories)
 $('#user_contest_id').change(set_category_blank)
 
 
