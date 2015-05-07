@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503223018) do
+ActiveRecord::Schema.define(version: 20150507032152) do
 
   create_table "attachments", force: true do |t|
     t.string   "filename"
@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 20150503223018) do
     t.integer "question_id"
     t.integer "user_id"
     t.integer "score"
-    t.string  "comment"
   end
 
   create_table "users", force: true do |t|

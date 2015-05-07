@@ -43,8 +43,10 @@
       </tbody>
     </thead>
   </table>
-
+  
+  <%= label_tag 'comment', 'Comment', :class => 'form-label' %>
+  <%= text_area_tag :comment.to_s, @comment ? @comment.comment : nil, :class => 'form-control' %>
       
   <br/>
-  <button id="submit">Submit Scores</button>
+  <button id="submit" class="btn btn-default">Submit Scores</button>
 <% end %>

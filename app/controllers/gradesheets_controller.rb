@@ -5,6 +5,7 @@ class GradesheetsController < ApplicationController
     @comment = 
     @project = Project.find(params[:id])
     @question_types = @project.contest.question_types
+    @comment = Comment.find_by(:project_id => params[:id], :user_id => current_user.id)
     params.merge(:global_project_id => params[:id])
     #@global_project_id = @project
     #@judge_id  = 1
@@ -21,10 +22,17 @@ class GradesheetsController < ApplicationController
         puts q.id
         params["comment"+q.id.to_s] ||= ''
         if Score.exists?(:project_id => params[:id], :user_id => current_user.id, :question_id => q.id)
-            Score.update_record(1, params[:id], current_user.id, q.id, params[q.id.to_s]['score'], params["comment"+q.id.to_s].strip)
+          Score.update_record(1, params[:id], current_user.id, q.id, params[q.id.to_s]['score'])
         else 
-            Score.insert_record(1, params[:id], current_user.id, q.id, params[q.id.to_s]['score'], params["comment"+q.id.to_s].strip)
+          Score.insert_record(1, params[:id], current_user.id, q.id, params[q.id.to_s]['score'])
         end
+        
+        if Comment.exists?(:project_id => params[:id], :user_id => current_user.id)
+          Comment.update_record(1, params[:id], current_user.id, params[:comment])
+        else
+          Comment.insert_record(1, params[:id], current_user.id, params[:comment])
+        end
+        
       end
     end
     # if Comment.exists?(1, params[:id], current_user.id) then

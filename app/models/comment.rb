@@ -12,18 +12,10 @@ class Comment < ActiveRecord::Base
        s.save!
    end
    
-   def self.exists?(round_number, project_id, judge_id)
-       users = Comment.where(round_number: round_number, project_id: project_id, user_id: judge_id)
-       if users.count==0 then
-           return false
-        else
-            return true
-       end
-   end
-   
    def self.update_record(round_number, project_id, judge_id, comment)
        user = Comment.find_by(round_number: round_number, project_id: project_id, user_id: judge_id)
        user.comment = comment
        user.save!
    end
+   
 end
