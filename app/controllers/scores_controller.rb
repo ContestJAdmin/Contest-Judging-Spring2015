@@ -45,7 +45,7 @@ class ScoresController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.csv { send_data Score.to_csv(@projects_score, @projects) }
+      format.csv { send_data Score.to_csv(@projects_scores, @projects) }
     end
   end
 end

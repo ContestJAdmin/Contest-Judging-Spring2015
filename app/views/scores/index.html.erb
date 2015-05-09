@@ -33,14 +33,17 @@
                         <th>Judge Name</th>
                         <th>Judge Email</th>
                         <th>Total Score</th>
+                        <th>Judge Comment</th>
                         <th></th>
                       </tr>
                       <% project.users.judges.each do |judge| %>
-                      <tr>
-                        <td> <%= judge.name %></td>
-                        <td> <%= judge.email %></td>
-                        <td> <%= @judges_scores[judge.id][project_id].round(2) %></td>
-                      </tr>
+                        <% comment = project.comments.find_by(:user_id => judge.id) %>
+                        <tr>
+                          <td> <%= judge.name %></td>
+                          <td> <%= judge.email %></td>
+                          <td> <%= @judges_scores[judge.id][project_id].round(2) %></td>
+                          <td> <%= comment ? comment.comment : nil %> </td>
+                        </tr>
                       <% end %>
                     </table>
                   </div>
@@ -85,13 +88,13 @@
                       <th></th>
                     </tr>
                     <% project.users.judges.each do |judge| %>
-                    <% comment = project.comments.find_by(:user_id => judge.id) %>
-                    <tr>
-                      <td> <%= judge.name %></td>
-                      <td> <%= judge.email %></td>
-                      <td> <%= @judges_scores[judge.id][project_id].round(2) %></td>
-                      <td> <%= comment ? comment.comment : nil %> </td>
-                    </tr>
+                      <% comment = project.comments.find_by(:user_id => judge.id) %>
+                      <tr>
+                        <td> <%= judge.name %></td>
+                        <td> <%= judge.email %></td>
+                        <td> <%= @judges_scores[judge.id][project_id].round(2) %></td>
+                        <td> <%= comment ? comment.comment : nil %> </td>
+                      </tr>
                     <% end %>
                   </table>
                 </div>

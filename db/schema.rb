@@ -11,15 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507032152) do
-
-  create_table "attachments", force: true do |t|
-    t.string   "filename"
-    t.string   "content_type"
-    t.binary   "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20150509171755) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
