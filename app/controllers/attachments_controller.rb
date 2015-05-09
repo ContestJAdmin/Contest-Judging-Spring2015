@@ -25,7 +25,6 @@ class AttachmentsController < ApplicationController
       flash[:success] = "File upload successful"
       redirect_to contest_path(@contest)
     else
-      flash[:error] = "Somethings wrong"
       redirect_to new_contest_attachment_path(@contest)
     end
   end
@@ -44,7 +43,6 @@ class AttachmentsController < ApplicationController
       category_name = row[2]
       if !contest.categories.exists?("name"=> category_name)
         if !create_category(contest, category_name)
-          puts "getting to create_category"
           return false
         end
       end
@@ -52,12 +50,10 @@ class AttachmentsController < ApplicationController
       project = contest.projects.build(parameters)
       if(!project.location_unique?)
         flash[:error] = "Duplicate location assignment detected."
-        puts "getting to location unique"
         return false
       end
       if (!project.save)
         flash[:error] = "Something went wrong, please check your project file."
-        puts "project getting to save"
         return false
       end
     end

@@ -1,7 +1,168 @@
-Name,Location,Category Name
-Project 1,B22,Capstone
-Project 2,B25,Capstone
-Project 3,I10,Software
-Project 4,I19,Software
-Project 5,A4,EPICS
-Project 6,A10,EPICS
+Innovation in Pipe Rack Desgin,A10,Capstone
+Subsea Valve Actuation Modeling,A11,Capstone
+Static Subsea Metal Seal Tester,A12,Capstone
+Pressure Relief Valve,A13,Capstone
+Modular Mudmat for Subsea Applications,A14,Capstone
+Schlumberger Seal Tester,A15,Capstone
+HVAC Duct Navigation and Leak Detection,A16,Capstone
+Non-Intrusive Measurement of Compressed Air Leakage,A17,Capstone
+Subsea Oil-Water Separator,A18,Capstone
+Halliburton Gravel Pack Position Locator Tool (Reveille Mandrel),A4,Capstone
+AFRL Challenge,A5,Capstone
+Design and Fabrication of a Small-Scale Selective Laser Sintering Machine,A6,Capstone
+Thermodynamic Optimization of a Consumer Ice Chest,A8,Capstone
+Shale Shaker Screen Manufacturing Process,A9,Capstone
+Project Title,Assignment,Category
+Code-based Analytic Simulation of a Theorized LOCA-induced Event,B10,Capstone
+Suppression Pool Design Improvements for Extended Operation of the Reactor Core Isolation Cooling System,B11,Capstone
+Tenaris Coiled Tubes: Industrial System Analysis,B12,Capstone
+Industrial System Design for Coiled Tubing,B13,Capstone
+AggiE Challenge Senior Design,B14,Capstone
+Bray Controls:Mounting Flanges,B15,Capstone
+Flowline Choke Throttle Valve Actuator,B16,Capstone
+MEASUREMENT OF THE LEAK RATE FROM PRIMARY WATER STRESS CORROSION CRACKS IN A PRESSURIZED WATER REACTOR,B17,Capstone
+Abrasive Removal Techniques,B18,Capstone
+Formula SAE - Aero,B3,Capstone
+Formula SAE Suspension,B4,Capstone
+Formula SAE Powertrain,B5,Capstone
+Formula SAE Chassis,B6,Capstone
+FSAE-Electrical,B7,Capstone
+Chopper Reliability,B8,Capstone
+Aggie Mini Power Station (AMPS),C10,Multidiciplnary
+EIC Quadcopter Tour,C11,Multidiciplnary
+Water Fountain Redesign,C12,Multidiciplnary
+Just4Water:Water Well Equipment Retrieval ,C13,Multidiciplnary
+SonarSafe Tracheostomy Tube Monitoring ,C14,Multidiciplnary
+Self-Heating Exothermic Warmer for Biologics,C15,Multidiciplnary
+Smart Insert,C16,Multidiciplnary
+Project ARM: Acoustic Recovery Method,C17,Multidiciplnary
+ASHRAE Student Design Competition,C18,Multidiciplnary
+MEEN 402 - Baker Hughes TORXS System,C19,Multidiciplnary
+Space Based Products: NESI+ System and MISL Stack,C2,Multidiciplnary
+Alternative Fuel Sources for Radioisotope Thermoelectric Generators,C4,Multidiciplnary
+PerSketchTivity,C5,Multidiciplnary
+gRec: A Gesture Recognition Interface for CourseSketch,C6,Multidiciplnary
+Mechanix: Sketch Education Software from a User Perspective,C7,Multidiciplnary
+Mechanix: A Sketch Based Educational Interface,C8,Multidiciplnary
+Novel Morphing Aerostructure,C9,Multidiciplnary
+Rapid Manufacturing of a Transtibial Prosthesis,D10,Capstone
+Obstructive Sleep Apnea Oral Treatment Device - DreamCatcher,D11,Capstone
+Thermoformable Shin Guard,D12,Capstone
+Under Vehicle Inspection,D13,Capstone
+Near-Space Glider,D14,Multidiciplnary
+Match Up Smartphone Application,D15,Multidiciplnary
+FireCAT,D16,Multidiciplnary
+Inventeer Autonomous Quadcopter,D17,Multidiciplnary
+Home Security and Item Detection,D18,Multidiciplnary
+DoVR: Demonstration of Variable Radiator,D19,Multidiciplnary
+ENGR111/112,D2,Freshman
+Endotracheal Tube Cuff Leak Detection System,D3,Capstone
+Non-Destructive Test Method for Myocardial Protection System Heat Exchanger Efficiency,D4,Capstone
+Design and Construction of a Mock Circulatory Loop for VAD Durability Testing,D5,Capstone
+MediData,D6,Capstone
+Non-invasive Detection of Cerebral Fluid Using Bioimpedance,D7,Capstone
+Pin/Wire Driver Redesign,D8,Capstone
+Global Mobile Malaria Detection,D9,Capstone
+ENGR111/112,E1,Freshman
+ENGR111/112,E10,Freshman
+ENGR111/112,E11,Freshman
+ENGR111/112,E12,Freshman
+ENGR111/112,E13,Freshman
+ENGR111/112,E14,Freshman
+ENGR111/112,E15,Freshman
+Suitability of Elo Rating System in Team Games,E16,Multidiciplnary
+TURTLE Spherebot,E17,Multidiciplnary
+Robotic Hand (Turtle Robotics),E18,Multidiciplnary
+Inventeering Team 1,E19,Multidiciplnary
+ENGR111/112,E2,Freshman
+ENGR111/112,E3,Freshman
+ENGR111/112,E4,Freshman
+ENGR111/112,E5,Freshman
+ENGR111/112,E6,Freshman
+ENGR111/112,E7,Freshman
+ENGR111/112,E8,Freshman
+ENGR111/112,E9,Freshman
+ENGR111/112,F1,Freshman
+Rainwater Challenge,F10,Capstone
+Progressive Vellore - Air Quality in India,F11,Capstone
+Over Guardrail Mower ,F12,Capstone
+Development of the Cardamom Value Chain,F13,Capstone
+Scheduling Model for Dallas Health and Wellness Institute,F14,Capstone
+Lockheed Martin Resource Optimization,F15,Capstone
+Applied Systems & Technology Transfer,F16,Capstone
+MD Anderson Ambulatory Surgery Center (ASC) Capacity Analysis,F17,Capstone
+Walmart Capstone Design,F18,Capstone
+ISEN 459 Team 12- Hexa Lining And Services,F19,Capstone
+SARA Wetland Design,F2,Capstone
+SARA Wetland Design,F3,Capstone
+Jonestown Public Sewer Team A,F4,Capstone
+Jonestown Public Sewer B,F5,Capstone
+Sanitary Living Solutions,F6,Capstone
+HUVRData,F7,Capstone
+Improving Cotton Bale Handling,F8,Capstone
+Brackish Water Distillation,F9,Capstone
+CourseSketch,G10,Multidiciplnary
+Kid Gab,G12,Multidiciplnary
+SIFA Buoy Sensors Network,G13,Multidiciplnary
+Miniature Autonomous Robots for Pipeline Inspection,G14,Multidiciplnary
+Fire Flight,G15,Multidiciplnary
+Point of Care (POC) Health Informatics for Proactive Epileptic Seizure Alert,G16,Multidiciplnary
+Designing and building the cellular machinery with a bottom-up strategy,G17,Multidiciplnary
+Inexpensive Multi-Parameter Tester,G18,Multidiciplnary
+Inexpensive Multiparameter Tester,G18,Multidiciplnary
+Scalable Clean Water,G19,Multidiciplnary
+Biosensors for pathogen detection,G3,Multidiciplnary
+Autonomous UAV,G4,Multidiciplnary
+Autonomous Packbot for Radiation Survey,G6,Multidiciplnary
+On-demand Manufacturing of Rapidly Deployable Superabsorbents  for Oil Spill Cleanup,G8,Multidiciplnary
+Lackey,H1,Capstone
+Home Doctor Connection,H10,Capstone
+Elastography Data Acquisition System,H11,Capstone
+CARdiac,H12,Capstone
+Tic-Tac-Toe Playing Robot,H13,Capstone
+Wheelchair Motor Controller,H14,Capstone
+Assistive Calf,H15,Capstone
+I Guide-A Navigation Aid for the Visually Impaired,H18,Capstone
+Motion-Tracking Sleeve,H19,Capstone
+CycleFit,H2,Capstone
+Bode Plot Analysis with NImyRIO,H4,Capstone
+Portable MRI Lab System,H5,Capstone
+Solar Power Systems,H6,Capstone
+Wearable Indoor Localization Device (WILD) ,H7,Capstone
+Miniature Ion Thruster,H8,Capstone
+Autonomous Acoustophoretic oil-in-water sensor system,H9,Capstone
+WheelART,I1,Capstone
+Texas Aggie Unmanned Systems (TAGUS),I12,Multidiciplnary
+Acoustic Shield,I13,Multidiciplnary
+Lynx Toys,I14,Multidiciplnary
+Dactize - Finger Mapping for Touchscreens,I15,Multidiciplnary
+Letigo storytelling system for elementary School children,I16,Multidiciplnary
+The Motley Tool,I17,Multidiciplnary
+Aircalendar ,I18,Multidiciplnary
+Jaw Exercise Machine,I19,Multidiciplnary
+Power Analysis System,I3,Capstone
+Assembly Trainer,I4,Capstone
+Frontier: A directed graph system for web navigation,I5,Capstone
+Shoot Responsibly a Weapon safety simulator,I6,Capstone
+Open Enterprise  SMS based web application for collecting data.,I7,Capstone
+A Study of Users Undergoing Adaptive Virtual Reality Fear Therapy,I8,Capstone
+VoiceSketch,I9,Capstone
+Self-powered Mobile Data Collection Network,J1,Capstone
+WiMi: Wireless Mouse Tracking System,J10,Capstone
+KYGO Pulse,J11,Capstone
+KYGO PULSE,J12,Capstone
+KYGO Sleeve,J13,Capstone
+Lock Heed Martin Shim Application Modifications,J14,Capstone
+Wing Removal System,J15,Capstone
+Automation of Impact Testing,J16,Capstone
+Electron Beam Welding Fixture,J17,Capstone
+Oil States Bogey Project,J18,Capstone
+SMED Fixture Design,J19,Capstone
+enhanced facial recognition with IR camera ,J2,Capstone
+Retrofitting the 16-inch Boller and Chivens Telescope,J3,Capstone
+3D Laser Scanner,J4,Capstone
+Smart Pool Table,J5,Capstone
+Subterranean Mapping with Ground Penetrating Radar,J6,Capstone
+H^3 Monitoring System,J7,Capstone
+Surveillance 'Bot',J8,Capstone
+Security Robot,J9,Capstone
