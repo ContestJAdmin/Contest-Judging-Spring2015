@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
     end
     
     belongs_to :contest
-    has_many :projects
+    has_many :projects, :dependent => :nullify
     has_many :users, :dependent => :nullify
     
     validates :name, :presence => true, :length => { :maximum => 50}
