@@ -1,7 +1,7 @@
 <%= button_to 'Back', 'javascript:history.go(-1);' %>
 <h1>Upload Projects File </h1>
 <div class="row">
-<%= form_for @attachment, url: {action: "create"}, html: {class: "form-horizontal col-xs-3", role: "form"} do |f| %>
+<%= form_for 'attachment', url: {action: "create"}, html: {class: "form-horizontal col-xs-3", role: "form"} do |f| %>
     <div class="form-group"> 
       <%= f.label :attachment, 'Projects File', class: "form-label" %>
       <%= f.file_field :attachment, class: "form-control", :required => true %>

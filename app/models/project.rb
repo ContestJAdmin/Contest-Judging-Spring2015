@@ -1,8 +1,8 @@
 class Project < ActiveRecord::Base
-  validates :location, uniqueness: true
+  validates_uniqueness_of :location, :scope => :contest_id
   
   def location_unique?
-    Project.where(:location => self.location, :contest_id => self.contest_id).count == 0
+    return Project.where(:contest_id => self.contest_id).where(:location => self.location).count == 0
   end
   
   belongs_to :category
