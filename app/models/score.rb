@@ -23,7 +23,7 @@ class Score < ActiveRecord::Base
       csv << ['Project Name','Project Category','Score']
       projects_scores.each do |project_id, score|
         project = projects.find_by_id(project_id)
-        csv << [project.name, project.category.name, score]
+        csv << [project.name, 'test', score]
       end
     end
   end
