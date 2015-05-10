@@ -131,7 +131,7 @@
                   </table>
                   <ul class="breadcrumb">
                     <li role="presentation"><%= link_to 'Edit Category Name', edit_contest_category_path(@contest, category)%></li>
-                    <li role="presentation"><%= link_to 'Delete Category', [@contest, category], :method => :delete, data: {confirm: "Are you sure?"} %></li>
+                    <li role="presentation"><%= link_to 'Delete Category', [@contest, category], :method => :delete, data: {confirm: "All projects associated with this category will be deleted as well. Are you sure?"} %></li>
                   </ul>
                 </div>
               </div>

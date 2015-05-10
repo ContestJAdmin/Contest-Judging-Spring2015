@@ -30,6 +30,8 @@ class AttachmentsController < ApplicationController
   end
   
   def upload_file_and_process(contest, params)
+    
+    projects_for_rollback = []
     incoming_file = params[:attachment][:attachment]
     name =  'test.csv'
     directory = "public/"
@@ -43,19 +45,24 @@ class AttachmentsController < ApplicationController
       category_name = row[2]
       if !contest.categories.exists?("name"=> category_name)
         if !create_category(contest, category_name)
+          rollback(projects_for_rollback)
+          flash[:error] = "Something went wrong, please check your project file's categories."
           return false
         end
       end
       parameters["category_id"] = contest.categories.find_by_name(category_name).id
       project = contest.projects.build(parameters)
       if(!project.location_unique?)
+        rollback(projects_for_rollback)
         flash[:error] = "Duplicate location assignment detected."
         return false
       end
       if (!project.save)
+        rollback(projects_for_rollback)
         flash[:error] = "Something went wrong, please check your project file."
         return false
       end
+      projects_for_rollback.push(project)
     end
     return true
   end
@@ -64,10 +71,15 @@ class AttachmentsController < ApplicationController
     parameters = {"name" => category_name}
     category = contest.categories.build(parameters)
     if (!category.save)
-      flash[:error] = "Something went wrong, please check your project file."
       return false
     end
     return true
+  end
+  
+  def rollback(projects)
+    projects.each do |project|
+      project.destroy
+    end
   end
   
 end
